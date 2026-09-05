@@ -1,0 +1,23 @@
+PASS arbiter: stalled first/final beat, owner gap, round robin, reset
+tb/tb_arbiter.sv:26: $finish called at 136000 (1ps)
+PASS DW=512 DEPTH=4 received=1200 stalls=2896 simultaneous=103 partials=430 packet_gap_cycles=0
+tb/tb_interconnect.sv:110: $finish called at 23070000 (1ps)
+PASS DW=512 DEPTH=4 received=1200 stalls=2919 simultaneous=92 partials=430 packet_gap_cycles=2
+tb/tb_interconnect.sv:110: $finish called at 23030000 (1ps)
+PASS DW=512 DEPTH=4 received=1200 stalls=3075 simultaneous=92 partials=430 packet_gap_cycles=1
+tb/tb_interconnect.sv:110: $finish called at 23560000 (1ps)
+PASS DW=512 DEPTH=1 received=1200 stalls=4127 simultaneous=20 partials=430 packet_gap_cycles=484
+tb/tb_interconnect.sv:110: $finish called at 29210000 (1ps)
+PASS DW=512 DEPTH=1 received=1200 stalls=4323 simultaneous=21 partials=430 packet_gap_cycles=490
+tb/tb_interconnect.sv:110: $finish called at 29930000 (1ps)
+PASS DW=512 DEPTH=1 received=1200 stalls=4334 simultaneous=13 partials=430 packet_gap_cycles=479
+tb/tb_interconnect.sv:110: $finish called at 29900000 (1ps)
+PASS DW=64 DEPTH=3 received=1200 stalls=3025 simultaneous=91 partials=300 packet_gap_cycles=6
+tb/tb_interconnect.sv:110: $finish called at 23480000 (1ps)
+PASS DW=64 DEPTH=3 received=1200 stalls=3011 simultaneous=88 partials=300 packet_gap_cycles=5
+tb/tb_interconnect.sv:110: $finish called at 23150000 (1ps)
+PASS DW=64 DEPTH=3 received=1200 stalls=3037 simultaneous=97 partials=300 packet_gap_cycles=6
+tb/tb_interconnect.sv:110: $finish called at 23410000 (1ps)
+VCD info: dumpfile sim/interconnect.vcd opened for output.
+PASS DW=512 DEPTH=4 received=1200 stalls=2896 simultaneous=103 partials=430 packet_gap_cycles=0
+tb/tb_interconnect.sv:110: $finish called at 23070000 (1ps)

@@ -1,0 +1,5 @@
+read_verilog -sv rtl/axis_fifo.sv rtl/packet_rr_arbiter.sv rtl/axis_interconnect_2to1.sv
+hierarchy -check -top axis_interconnect_2to1
+synth -noabc -top axis_interconnect_2to1
+check -assert
+stat

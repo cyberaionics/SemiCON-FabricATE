@@ -1,0 +1,1419 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68 (git sha1 38e001a6f, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+
+-- Executing script file `synthesis/check.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/axis_fifo.sv
+Parsing SystemVerilog input from `rtl/axis_fifo.sv' to AST representation.
+Generating RTLIL representation for module `\axis_fifo'.
+Warning: Replacing memory \mem with list of registers. See rtl/axis_fifo.sv:36
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/packet_rr_arbiter.sv
+Parsing SystemVerilog input from `rtl/packet_rr_arbiter.sv' to AST representation.
+Generating RTLIL representation for module `\packet_rr_arbiter'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/axis_interconnect_2to1.sv
+Parsing SystemVerilog input from `rtl/axis_interconnect_2to1.sv' to AST representation.
+Generating RTLIL representation for module `\axis_interconnect_2to1'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \axis_interconnect_2to1
+Used module:     \axis_fifo
+Used module:     \packet_rr_arbiter
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 2
+
+4.2. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_fifo'.
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 2
+Generating RTLIL representation for module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Warning: Replacing memory \mem with list of registers. See rtl/axis_fifo.sv:36
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+
+4.3. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_fifo'.
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+Generating RTLIL representation for module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Warning: Replacing memory \mem with list of registers. See rtl/axis_fifo.sv:36
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+Found cached RTLIL representation for module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+
+4.4. Analyzing design hierarchy..
+Top module:  \axis_interconnect_2to1
+Used module:     $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:     \packet_rr_arbiter
+Used module:     $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+
+4.5. Analyzing design hierarchy..
+Top module:  \axis_interconnect_2to1
+Used module:     $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:     \packet_rr_arbiter
+Used module:     $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+Removing unused module `\axis_fifo'.
+Removed 1 unused modules.
+
+5. Executing SYNTH pass.
+
+5.1. Executing HIERARCHY pass (managing design hierarchy).
+
+5.1.1. Analyzing design hierarchy..
+Top module:  \axis_interconnect_2to1
+Used module:     $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:     \packet_rr_arbiter
+Used module:     $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+
+5.1.2. Analyzing design hierarchy..
+Top module:  \axis_interconnect_2to1
+Used module:     $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:     \packet_rr_arbiter
+Used module:     $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+Removed 0 unused modules.
+
+5.2. Executing PROC pass (convert processes to netlists).
+
+5.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+5.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$rtl/axis_fifo.sv:30$67 in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Marked 1 switch rules as full_case in process $proc$rtl/axis_fifo.sv:30$67 in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Marked 6 switch rules as full_case in process $proc$rtl/axis_fifo.sv:31$53 in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Marked 2 switch rules as full_case in process $proc$rtl/packet_rr_arbiter.sv:13$31 in module packet_rr_arbiter.
+Removed 1 dead cases from process $proc$rtl/axis_fifo.sv:30$93 in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Marked 1 switch rules as full_case in process $proc$rtl/axis_fifo.sv:30$93 in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Marked 6 switch rules as full_case in process $proc$rtl/axis_fifo.sv:31$79 in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Removed a total of 2 dead cases.
+
+5.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 6 assignments to connections.
+
+5.2.4. Executing PROC_INIT pass (extract init attributes).
+
+5.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+Found async reset \rst_n in `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+Found async reset \rst_n in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+
+5.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~16 debug messages>
+
+5.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$67'.
+     1/1: $1$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$44_DATA[577:0]$69
+Creating decoders for process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+     1/9: $0\count[1:0]
+     2/9: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$45_ADDR[0:0]$59
+     3/9: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$45_DATA[577:0]$60
+     4/9: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$45_DATA[577:0]$58
+     5/9: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$45_ADDR[0:0]$57
+     6/9: $0\mem[1][577:0]
+     7/9: $0\mem[0][577:0]
+     8/9: $0\rd_ptr[0:0]
+     9/9: $0\wr_ptr[0:0]
+Creating decoders for process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+     1/3: $0\next_priority[0:0]
+     2/3: $0\owner[0:0]
+     3/3: $0\locked[0:0]
+Creating decoders for process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$93'.
+     1/1: $1$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$70_DATA[577:0]$95
+Creating decoders for process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+     1/11: $0\count[2:0]
+     2/11: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$71_ADDR[1:0]$85
+     3/11: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$71_DATA[577:0]$86
+     4/11: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$71_DATA[577:0]$84
+     5/11: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$71_ADDR[1:0]$83
+     6/11: $0\mem[3][577:0]
+     7/11: $0\mem[2][577:0]
+     8/11: $0\mem[1][577:0]
+     9/11: $0\mem[0][577:0]
+    10/11: $0\rd_ptr[1:0]
+    11/11: $0\wr_ptr[1:0]
+
+5.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$44_DATA' from process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$67'.
+No latch inferred for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$70_DATA' from process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$93'.
+
+5.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\wr_ptr' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+  created $adff cell `$procdff$202' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\rd_ptr' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+  created $adff cell `$procdff$207' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\count' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+  created $adff cell `$procdff$212' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\mem[0]' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+  created $dff cell `$procdff$219' with positive edge clock.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\mem[1]' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+  created $dff cell `$procdff$226' with positive edge clock.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$45_ADDR' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+  created $adff cell `$procdff$231' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$45_DATA' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+  created $adff cell `$procdff$236' with positive edge clock and positive level reset.
+Creating register for signal `\packet_rr_arbiter.\locked' using process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+  created $adff cell `$procdff$241' with positive edge clock and positive level reset.
+Creating register for signal `\packet_rr_arbiter.\owner' using process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+  created $adff cell `$procdff$246' with positive edge clock and positive level reset.
+Creating register for signal `\packet_rr_arbiter.\next_priority' using process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+  created $adff cell `$procdff$251' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\wr_ptr' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $adff cell `$procdff$256' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\rd_ptr' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $adff cell `$procdff$261' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\count' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $adff cell `$procdff$266' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[0]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $dff cell `$procdff$273' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[1]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $dff cell `$procdff$280' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[2]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $dff cell `$procdff$287' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[3]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $dff cell `$procdff$294' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$71_ADDR' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $adff cell `$procdff$299' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$71_DATA' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+  created $adff cell `$procdff$304' with positive edge clock and positive level reset.
+
+5.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+5.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$67'.
+Removing empty process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$67'.
+Found and cleaned up 6 empty switches in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+Removing empty process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$53'.
+Found and cleaned up 2 empty switches in `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+Removing empty process `packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+Found and cleaned up 1 empty switch in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$93'.
+Removing empty process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$93'.
+Found and cleaned up 6 empty switches in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+Removing empty process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$79'.
+Cleaned up 16 empty switches.
+
+5.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~20 debug messages>
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+<suppressed ~6 debug messages>
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~21 debug messages>
+
+5.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 31 unused cells and 128 unused wires.
+<suppressed ~35 debug messages>
+
+5.5. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo...
+Checking module axis_interconnect_2to1...
+Checking module packet_rr_arbiter...
+Checking module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo...
+Found and reported 0 problems.
+
+5.6. Executing OPT pass (performing simple optimizations).
+
+5.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 48 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+5.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~67 debug messages>
+
+5.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+5.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~67 debug messages>
+
+5.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+5.7. Executing FSM pass (extract and optimize FSM).
+
+5.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+5.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+5.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+5.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+5.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+5.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+5.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+5.8. Executing OPT pass (performing simple optimizations).
+
+5.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~67 debug messages>
+
+5.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$202 ($adff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = $procmux$127_Y, Q = \wr_ptr).
+Adding EN signal on $procdff$207 ($adff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = $procmux$121_Y, Q = \rd_ptr).
+Adding EN signal on $procdff$219 ($dff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[0]).
+Adding EN signal on $procdff$212 ($adff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = $0\count[1:0], Q = \count).
+Adding EN signal on $procdff$226 ($dff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[1]).
+Adding EN signal on $procdff$241 ($adff) from module packet_rr_arbiter (D = $procmux$142_Y, Q = \locked).
+Adding EN signal on $procdff$251 ($adff) from module packet_rr_arbiter (D = $not$rtl/packet_rr_arbiter.sv:17$35_Y, Q = \next_priority).
+Adding EN signal on $procdff$246 ($adff) from module packet_rr_arbiter (D = \selected, Q = \owner).
+Adding EN signal on $procdff$273 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[0]).
+Adding EN signal on $procdff$294 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[3]).
+Adding EN signal on $procdff$287 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[2]).
+Adding EN signal on $procdff$280 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[1]).
+Adding EN signal on $procdff$256 ($adff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = $procmux$194_Y, Q = \wr_ptr).
+Adding EN signal on $procdff$266 ($adff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = $0\count[2:0], Q = \count).
+Adding EN signal on $procdff$261 ($adff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = $procmux$188_Y, Q = \rd_ptr).
+
+5.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 27 unused cells and 27 unused wires.
+<suppressed ~30 debug messages>
+
+5.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~1 debug messages>
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~1 debug messages>
+
+5.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~32 debug messages>
+
+5.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 27 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 37 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+5.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$procmux$101_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$procmux$149_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$procmux$153_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$procmux$176_CMP0 ($eq).
+
+5.10. Executing PEEPOPT pass (run peephole optimizers).
+
+5.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo:
+  creating $macc model for $sub$rtl/axis_fifo.sv:44$66 ($sub).
+  creating $macc model for $add$rtl/axis_fifo.sv:43$65 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:40$64 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:37$62 ($add).
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:37$62.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:40$64.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:43$65.
+  creating $alu model for $macc $sub$rtl/axis_fifo.sv:44$66.
+  creating $alu model for $lt$rtl/axis_fifo.sv:28$48 ($lt): new $alu
+  creating $alu cell for $lt$rtl/axis_fifo.sv:28$48: $auto$alumacc.cc:548:replace_alu$345
+  creating $alu cell for $sub$rtl/axis_fifo.sv:44$66: $auto$alumacc.cc:548:replace_alu$350
+  creating $alu cell for $add$rtl/axis_fifo.sv:43$65: $auto$alumacc.cc:548:replace_alu$353
+  creating $alu cell for $add$rtl/axis_fifo.sv:40$64: $auto$alumacc.cc:548:replace_alu$356
+  creating $alu cell for $add$rtl/axis_fifo.sv:37$62: $auto$alumacc.cc:548:replace_alu$359
+  created 5 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module axis_interconnect_2to1:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module packet_rr_arbiter:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo:
+  creating $macc model for $sub$rtl/axis_fifo.sv:44$92 ($sub).
+  creating $macc model for $add$rtl/axis_fifo.sv:43$91 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:40$90 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:37$88 ($add).
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:37$88.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:40$90.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:43$91.
+  creating $alu model for $macc $sub$rtl/axis_fifo.sv:44$92.
+  creating $alu model for $lt$rtl/axis_fifo.sv:28$74 ($lt): new $alu
+  creating $alu cell for $lt$rtl/axis_fifo.sv:28$74: $auto$alumacc.cc:548:replace_alu$363
+  creating $alu cell for $sub$rtl/axis_fifo.sv:44$92: $auto$alumacc.cc:548:replace_alu$368
+  creating $alu cell for $add$rtl/axis_fifo.sv:43$91: $auto$alumacc.cc:548:replace_alu$371
+  creating $alu cell for $add$rtl/axis_fifo.sv:40$90: $auto$alumacc.cc:548:replace_alu$374
+  creating $alu cell for $add$rtl/axis_fifo.sv:37$88: $auto$alumacc.cc:548:replace_alu$377
+  created 5 $alu and 0 $macc cells.
+
+5.13. Executing SHARE pass (SAT-based resource sharing).
+
+5.14. Executing OPT pass (performing simple optimizations).
+
+5.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 28 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 38 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~32 debug messages>
+
+5.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 28 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 38 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~2 debug messages>
+
+5.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~32 debug messages>
+
+5.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 28 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 38 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+5.15. Executing MEMORY pass.
+
+5.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+5.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+5.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+5.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+5.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+5.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+5.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+5.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+5.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.17. Executing OPT pass (performing simple optimizations).
+
+5.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~3 debug messages>
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+<suppressed ~2 debug messages>
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~3 debug messages>
+
+5.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 29 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 13 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 40 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 1 cells.
+
+5.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 5 unused cells and 7 unused wires.
+<suppressed ~8 debug messages>
+
+5.17.5. Finished fast OPT passes.
+
+5.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+5.19. Executing OPT pass (performing simple optimizations).
+
+5.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 27 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 37 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~29 debug messages>
+
+5.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 27 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 37 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.19.6. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $mux $procmux$100 in front of them:
+        $auto$alumacc.cc:548:replace_alu$350
+        $auto$alumacc.cc:548:replace_alu$353
+
+    Found cells that share an operand and can be merged by moving the $mux $procmux$152 in front of them:
+        $auto$alumacc.cc:548:replace_alu$368
+        $auto$alumacc.cc:548:replace_alu$371
+
+5.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 12 unused wires.
+<suppressed ~2 debug messages>
+
+5.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~2 debug messages>
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~2 debug messages>
+
+5.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~29 debug messages>
+
+5.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:244:merge_operators$389:
+      Old ports: A=2'11, B=2'01, Y=$auto$rtlil.cc:3402:Mux$390
+      New ports: A=1'1, B=1'0, Y=$auto$rtlil.cc:3402:Mux$390 [1]
+      New connections: $auto$rtlil.cc:3402:Mux$390 [0] = 1'1
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:244:merge_operators$396:
+      Old ports: A=3'111, B=3'001, Y=$auto$rtlil.cc:3402:Mux$397
+      New ports: A=1'1, B=1'0, Y=$auto$rtlil.cc:3402:Mux$397 [1]
+      New connections: { $auto$rtlil.cc:3402:Mux$397 [2] $auto$rtlil.cc:3402:Mux$397 [0] } = { $auto$rtlil.cc:3402:Mux$397 [1] 1'1 }
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 2 changes.
+
+5.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 26 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 36 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.19.14. Executing OPT_SHARE pass.
+
+5.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~2 debug messages>
+
+5.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~1 debug messages>
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~1 debug messages>
+
+5.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+5.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+5.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 26 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 36 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+5.19.22. Executing OPT_SHARE pass.
+
+5.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+5.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+5.19.26. Finished fast OPT passes. (There is nothing left to do.)
+
+5.20. Executing TECHMAP pass (map to technology primitives).
+
+5.20.1. Executing Verilog-2005 frontend: /share/techmap.v
+Parsing Verilog input from `/share/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+5.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod$78e969f2586efcf3a5b0b0440bcca0db83d5cca2\_90_alu for cells of type $alu.
+Using template $paramod$fc972a7a46956c1788f3cb5257b53c8f1df2d0cc\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000001 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000001 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod$constmap:de554f9cc18e049d5b7dc95f0bcf8e03e57019ff$paramod$1e265d9719406ee45a570be27d6567e3eeff81e5\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$7e708ae28ab761f11d0fb59d3ffc72f6a4baf5d9\_90_alu for cells of type $alu.
+No more expansions possible.
+<suppressed ~844 debug messages>
+
+5.21. Executing OPT pass (performing simple optimizations).
+
+5.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~51 debug messages>
+Optimizing module axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~85 debug messages>
+
+5.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 2348 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 2343 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+<suppressed ~15 debug messages>
+Finding identical cells in module `\axis_interconnect_2to1'.
+Computing hashes of 586 cells of `\axis_interconnect_2to1'.
+Finding duplicate cells in `\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 6439 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 6423 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+<suppressed ~48 debug messages>
+Removed a total of 21 cells.
+
+5.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 10 unused cells and 393 unused wires.
+<suppressed ~13 debug messages>
+
+5.21.5. Finished fast OPT passes.
+
+5.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `axis_interconnect_2to1'. Setting top module to axis_interconnect_2to1.
+
+5.22.1. Analyzing design hierarchy..
+Top module:  \axis_interconnect_2to1
+Used module:     $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:     \packet_rr_arbiter
+Used module:     $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+
+5.22.2. Analyzing design hierarchy..
+Top module:  \axis_interconnect_2to1
+Used module:     $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:     \packet_rr_arbiter
+Used module:     $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+Removed 0 unused modules.
+
+5.23. Printing statistics.
+
+=== $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       41 wires
+     2925 wire bits
+       21 public wires
+     2324 public wire bits
+       14 ports
+     1162 port bits
+     2340 cells
+        8   $_AND_
+        4   $_DFFE_PN0P_
+     1156   $_DFFE_PP_
+     1158   $_MUX_
+        8   $_NOT_
+        4   $_OR_
+        2   $_XOR_
+
+=== axis_interconnect_2to1 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       36 wires
+     3480 wire bits
+       32 public wires
+     2902 public wire bits
+       18 ports
+     1740 port bits
+      582 cells
+        3   $_AND_
+      578   $_MUX_
+        1   $_NOT_
+        4 submodules
+        1   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+        2   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+        1   packet_rr_arbiter
+
+=== packet_rr_arbiter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       19 wires
+       20 wire bits
+        9 public wires
+       10 public wire bits
+        6 ports
+        7 port bits
+       14 cells
+        3   $_AND_
+        3   $_DFFE_PN0P_
+        3   $_MUX_
+        4   $_NOT_
+        1   $_OR_
+
+=== $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2958 wires
+     7013 wire bits
+       23 public wires
+     3483 public wire bits
+       14 ports
+     1162 port bits
+     6418 cells
+     1745   $_AND_
+        7   $_DFFE_PN0P_
+     2312   $_DFFE_PP_
+     1160   $_MUX_
+       17   $_NOT_
+     1171   $_OR_
+        6   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+    15772 axis_interconnect_2to1
+     2340 $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+     6418 $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+       14 packet_rr_arbiter
+
+        +----------Count including submodules.
+        | 
+     6012 wires
+    20451 wire bits
+      108 public wires
+    12202 public wire bits
+       66 ports
+     5233 port bits
+        - memories
+        - memory bits
+        - processes
+    15772 cells
+     3504   $_AND_
+       21   $_DFFE_PN0P_
+     5780   $_DFFE_PP_
+     4059   $_MUX_
+       47   $_NOT_
+     2347   $_OR_
+       14   $_XOR_
+        4 submodules
+        1   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+        2   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+        1   packet_rr_arbiter
+
+5.24. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo...
+Checking module axis_interconnect_2to1...
+Checking module packet_rr_arbiter...
+Checking module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo...
+Found and reported 0 problems.
+
+6. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo...
+Checking module axis_interconnect_2to1...
+Checking module packet_rr_arbiter...
+Checking module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo...
+Found and reported 0 problems.
+
+7. Printing statistics.
+
+=== $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       41 wires
+     2925 wire bits
+       21 public wires
+     2324 public wire bits
+       14 ports
+     1162 port bits
+     2340 cells
+        8   $_AND_
+        4   $_DFFE_PN0P_
+     1156   $_DFFE_PP_
+     1158   $_MUX_
+        8   $_NOT_
+        4   $_OR_
+        2   $_XOR_
+
+=== axis_interconnect_2to1 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       36 wires
+     3480 wire bits
+       32 public wires
+     2902 public wire bits
+       18 ports
+     1740 port bits
+      582 cells
+        3   $_AND_
+      578   $_MUX_
+        1   $_NOT_
+        4 submodules
+        1   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+        2   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+        1   packet_rr_arbiter
+
+=== packet_rr_arbiter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       19 wires
+       20 wire bits
+        9 public wires
+       10 public wire bits
+        6 ports
+        7 port bits
+       14 cells
+        3   $_AND_
+        3   $_DFFE_PN0P_
+        3   $_MUX_
+        4   $_NOT_
+        1   $_OR_
+
+=== $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2958 wires
+     7013 wire bits
+       23 public wires
+     3483 public wire bits
+       14 ports
+     1162 port bits
+     6418 cells
+     1745   $_AND_
+        7   $_DFFE_PN0P_
+     2312   $_DFFE_PP_
+     1160   $_MUX_
+       17   $_NOT_
+     1171   $_OR_
+        6   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+    15772 axis_interconnect_2to1
+     2340 $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+     6418 $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+       14 packet_rr_arbiter
+
+        +----------Count including submodules.
+        | 
+     6012 wires
+    20451 wire bits
+      108 public wires
+    12202 public wire bits
+       66 ports
+     5233 port bits
+        - memories
+        - memory bits
+        - processes
+    15772 cells
+     3504   $_AND_
+       21   $_DFFE_PN0P_
+     5780   $_DFFE_PP_
+     4059   $_MUX_
+       47   $_NOT_
+     2347   $_OR_
+       14   $_XOR_
+        4 submodules
+        1   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+        2   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+        1   packet_rr_arbiter
+
+Warnings: 1 unique messages, 3 total
+End of script. Logfile hash: 3e5291b859, time: 0.80s, user: 0.81s, system: 0.00s
+Yosys 0.68 (git sha1 38e001a6f, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+Time spent: 22% 20x opt_clean (0 sec), 17% 14x opt_dff (0 sec), ...
