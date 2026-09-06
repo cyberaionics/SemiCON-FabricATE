@@ -70,6 +70,12 @@ Your block ends at m_axis_*. Link-layer owner handles framing, CRC/FEC and any
 how packet metadata and return traffic work before adding read/write features.
 Do not hard-code a latency between modules; use the handshake.
 
+The implemented `axis_link_tx` wrapper now connects this boundary to
+`axis_frame_packetizer`. See `PACKETIZER.md` for its prototype framing and
+512-to-256 conversion contract. TX CRC and FEC are implemented (see `CRC.md`
+and `FEC.md`); return traffic remains unimplemented. The interconnect interface
+above is unchanged.
+
 ## Acceptance checklist for teammate integration
 
 1. Connect every field above, especially KEEP, LAST and READY.

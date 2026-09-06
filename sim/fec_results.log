@@ -1,0 +1,3 @@
+PASS generated 2032 FEC vectors including all 2000 input basis bits
+PASS FEC: 2032 vectors, all 2000 basis bits, enable gaps, clear priority, 3 reset positions
+tb/tb_flit_fec6.sv:46: $finish called at 5163000000 (1ps)

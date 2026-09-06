@@ -1,0 +1,4 @@
+PASS generated 32 independent CRC vectors
+Generator (x^8 through constant): 01 d5 68 fe d5 33 41 4d 69
+PASS all 1936 single-bit inputs match Appendix K generator matrix
+Matrix SHA256: 119efbad5946d2ef88c0cf04fdb79eae689a42e437fe6ae85ec9f365a1fee022

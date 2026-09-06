@@ -1,0 +1,3 @@
+PASS Appendix J reference encoder matches all 2032 FEC vectors
+C:\Users\debad\Desktop\SemiCON-FabricATE\sim\build\fec_reference\test.sv:25: $finish called at 2032 (1s)
+Reference compatibility change: constant alpha table declaration only.

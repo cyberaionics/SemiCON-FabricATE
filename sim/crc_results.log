@@ -1,0 +1,4 @@
+PASS generated 32 independent CRC vectors
+Generator (x^8 through constant): 01 d5 68 fe d5 33 41 4d 69
+PASS CRC: 32 vectors, enable gaps, clear/reset, 2128 corrupted codewords rejected
+tb/tb_flit_crc8.sv:60: $finish called at 93210000 (1ps)
