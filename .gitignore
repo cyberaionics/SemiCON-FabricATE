@@ -1,2 +1,7 @@
-*.pdf
-*.zip
+.tools/
+sim/build/
+sim/compile_logs/
+*.vcd
+*.fst
+__pycache__/
+*.py[cod]

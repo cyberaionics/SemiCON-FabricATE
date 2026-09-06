@@ -1,0 +1,2929 @@
+
+-- Executing script file `synthesis/check_link.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/axis_fifo.sv
+Parsing SystemVerilog input from `rtl/axis_fifo.sv' to AST representation.
+Generating RTLIL representation for module `\axis_fifo'.
+Warning: Replacing memory \mem with list of registers. See rtl/axis_fifo.sv:36
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/packet_rr_arbiter.sv
+Parsing SystemVerilog input from `rtl/packet_rr_arbiter.sv' to AST representation.
+Generating RTLIL representation for module `\packet_rr_arbiter'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/axis_interconnect_2to1.sv
+Parsing SystemVerilog input from `rtl/axis_interconnect_2to1.sv' to AST representation.
+Generating RTLIL representation for module `\axis_interconnect_2to1'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/flit_crc8.sv
+Parsing SystemVerilog input from `rtl/flit_crc8.sv' to AST representation.
+Generating RTLIL representation for module `\flit_crc8'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/flit_fec6.sv
+Parsing SystemVerilog input from `rtl/flit_fec6.sv' to AST representation.
+Generating RTLIL representation for module `\flit_fec6'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/axis_frame_packetizer.sv
+Parsing SystemVerilog input from `rtl/axis_frame_packetizer.sv' to AST representation.
+Generating RTLIL representation for module `\axis_frame_packetizer'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/axis_link_tx.sv
+Parsing SystemVerilog input from `rtl/axis_link_tx.sv' to AST representation.
+Generating RTLIL representation for module `\axis_link_tx'.
+Successfully finished Verilog frontend.
+
+8. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     \axis_interconnect_2to1
+Used module:         \axis_fifo
+Used module:         \packet_rr_arbiter
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 2
+
+8.2. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_fifo'.
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 2
+Generating RTLIL representation for module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Warning: Replacing memory \mem with list of registers. See rtl/axis_fifo.sv:36
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+
+8.3. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_fifo'.
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+Generating RTLIL representation for module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Warning: Replacing memory \mem with list of registers. See rtl/axis_fifo.sv:36
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+Found cached RTLIL representation for module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Parameter \DATA_WIDTH = 512
+Parameter \FIFO_DEPTH = 4
+
+8.4. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_interconnect_2to1'.
+Parameter \DATA_WIDTH = 512
+Parameter \FIFO_DEPTH = 4
+Generating RTLIL representation for module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+
+8.5. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+Used module:         \axis_fifo
+Used module:         \packet_rr_arbiter
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 2
+Found cached RTLIL representation for module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+Found cached RTLIL representation for module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Parameter \DATA_WIDTH = 512
+Parameter \DEPTH = 4
+Found cached RTLIL representation for module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+
+8.6. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+Used module:         $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:         \packet_rr_arbiter
+Used module:         $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+
+8.7. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+Used module:         $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:         \packet_rr_arbiter
+Used module:         $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+Removing unused module `\axis_interconnect_2to1'.
+Removing unused module `\axis_fifo'.
+Removed 2 unused modules.
+
+9. Executing SYNTH pass.
+
+9.1. Executing HIERARCHY pass (managing design hierarchy).
+
+9.1.1. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+Used module:         $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:         \packet_rr_arbiter
+Used module:         $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+
+9.1.2. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+Used module:         $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:         \packet_rr_arbiter
+Used module:         $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+Removed 0 unused modules.
+
+9.2. Executing PROC pass (convert processes to netlists).
+
+9.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:26$457'.
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:26$401'.
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:27$345'.
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:27$289'.
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:28$233'.
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:28$177'.
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:29$121'.
+Found and cleaned up 1 empty switch in `\flit_crc8.$proc$rtl/flit_crc8.sv:29$65'.
+Cleaned up 8 empty switches.
+
+9.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$rtl/axis_fifo.sv:30$676 in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Marked 1 switch rules as full_case in process $proc$rtl/axis_fifo.sv:30$676 in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Marked 6 switch rules as full_case in process $proc$rtl/axis_fifo.sv:31$662 in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Marked 11 switch rules as full_case in process $proc$rtl/axis_frame_packetizer.sv:51$613 in module axis_frame_packetizer.
+Marked 4 switch rules as full_case in process $proc$rtl/flit_fec6.sv:17$520 in module flit_fec6.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:26$457 in module flit_crc8.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:26$401 in module flit_crc8.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:27$345 in module flit_crc8.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:27$289 in module flit_crc8.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:28$233 in module flit_crc8.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:28$177 in module flit_crc8.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:29$121 in module flit_crc8.
+Marked 7 switch rules as full_case in process $proc$rtl/flit_crc8.sv:29$65 in module flit_crc8.
+Marked 2 switch rules as full_case in process $proc$rtl/flit_crc8.sv:30$62 in module flit_crc8.
+Marked 2 switch rules as full_case in process $proc$rtl/packet_rr_arbiter.sv:13$31 in module packet_rr_arbiter.
+Removed 1 dead cases from process $proc$rtl/axis_fifo.sv:30$702 in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Marked 1 switch rules as full_case in process $proc$rtl/axis_fifo.sv:30$702 in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Marked 6 switch rules as full_case in process $proc$rtl/axis_fifo.sv:31$688 in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Removed a total of 2 dead cases.
+
+9.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 85 assignments to connections.
+
+9.2.4. Executing PROC_INIT pass (extract init attributes).
+
+9.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+Found async reset \rst_n in `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+Found async reset \rst_n in `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+Found async reset \rst_n in `\flit_crc8.$proc$rtl/flit_crc8.sv:30$62'.
+Found async reset \rst_n in `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+Found async reset \rst_n in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+
+9.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~89 debug messages>
+
+9.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$676'.
+     1/1: $1$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$653_DATA[577:0]$678
+Creating decoders for process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+     1/9: $0\count[1:0]
+     2/9: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$654_ADDR[0:0]$668
+     3/9: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$654_DATA[577:0]$669
+     4/9: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$654_DATA[577:0]$667
+     5/9: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$654_ADDR[0:0]$666
+     6/9: $0\mem[1][577:0]
+     7/9: $0\mem[0][577:0]
+     8/9: $0\rd_ptr[0:0]
+     9/9: $0\wr_ptr[0:0]
+Creating decoders for process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+     1/23: $6$lookahead\payload$612[1887:0]$651
+     2/23: $5$lookahead\payload$612[1887:0]$649
+     3/23: $4$lookahead\payload$612[1887:0]$629
+     4/23: $4$bitselwrite$pos$rtl/axis_frame_packetizer.sv:72$584[31:0]$628
+     5/23: $3$lookahead\payload$612[1887:0]$626
+     6/23: $3$bitselwrite$pos$rtl/axis_frame_packetizer.sv:72$584[31:0]$625
+     7/23: $2$lookahead\payload$612[1887:0]$620
+     8/23: $2$bitselwrite$pos$rtl/axis_frame_packetizer.sv:72$584[31:0]$619
+     9/23: $1$lookahead\payload$612[1887:0]$618
+    10/23: $1$bitselwrite$pos$rtl/axis_frame_packetizer.sv:72$584[31:0]$617
+    11/23: $0\fec_index[7:0]
+    12/23: $0\crc_index[7:0]
+    13/23: $0\final_frame[0:0]
+    14/23: $0\first_frame[0:0]
+    15/23: $0\packet_active[0:0]
+    16/23: $0\source[0:0]
+    17/23: $0\out_beat[2:0]
+    18/23: $0\byte_count[7:0]
+    19/23: $0\lane[5:0]
+    20/23: $0\beat_last[0:0]
+    21/23: $0\beat_keep[63:0]
+    22/23: $0\beat_data[511:0]
+    23/23: $0\state[2:0]
+Creating decoders for process `\flit_fec6.$proc$rtl/flit_fec6.sv:16$577'.
+Creating decoders for process `\flit_fec6.$proc$rtl/flit_fec6.sv:16$570'.
+Creating decoders for process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+     1/31: $4\alpha$func$rtl/flit_fec6.sv:26$515.$result[7:0]$546
+     2/31: $4\alpha$func$rtl/flit_fec6.sv:26$515.value[7:0]$547
+     3/31: $4\alpha$func$rtl/flit_fec6.sv:28$517.value[7:0]$551
+     4/31: $4\alpha$func$rtl/flit_fec6.sv:28$517.$result[7:0]$550
+     5/31: $4\alpha$func$rtl/flit_fec6.sv:27$516.value[7:0]$549
+     6/31: $4\alpha$func$rtl/flit_fec6.sv:27$516.$result[7:0]$548
+     7/31: $3\alpha$func$rtl/flit_fec6.sv:28$517.value[7:0]$545
+     8/31: $3\alpha$func$rtl/flit_fec6.sv:28$517.$result[7:0]$544
+     9/31: $3\alpha$func$rtl/flit_fec6.sv:27$516.value[7:0]$543
+    10/31: $3\alpha$func$rtl/flit_fec6.sv:27$516.$result[7:0]$542
+    11/31: $3\alpha$func$rtl/flit_fec6.sv:26$515.value[7:0]$541
+    12/31: $3\alpha$func$rtl/flit_fec6.sv:26$515.$result[7:0]$540
+    13/31: $2\alpha$func$rtl/flit_fec6.sv:28$517.value[7:0]$539
+    14/31: $2\alpha$func$rtl/flit_fec6.sv:28$517.$result[7:0]$538
+    15/31: $2\alpha$func$rtl/flit_fec6.sv:27$516.value[7:0]$537
+    16/31: $2\alpha$func$rtl/flit_fec6.sv:27$516.$result[7:0]$536
+    17/31: $2\alpha$func$rtl/flit_fec6.sv:26$515.value[7:0]$535
+    18/31: $2\alpha$func$rtl/flit_fec6.sv:26$515.$result[7:0]$534
+    19/31: $1\alpha$func$rtl/flit_fec6.sv:28$517.value[7:0]$533
+    20/31: $1\alpha$func$rtl/flit_fec6.sv:28$517.$result[7:0]$532
+    21/31: $1\alpha$func$rtl/flit_fec6.sv:27$516.value[7:0]$531
+    22/31: $1\alpha$func$rtl/flit_fec6.sv:27$516.$result[7:0]$530
+    23/31: $1\alpha$func$rtl/flit_fec6.sv:26$515.value[7:0]$529
+    24/31: $1\alpha$func$rtl/flit_fec6.sv:26$515.$result[7:0]$528
+    25/31: $0\group_index[1:0]
+    26/31: $0\parity2[7:0]
+    27/31: $0\parity1[7:0]
+    28/31: $0\parity0[7:0]
+    29/31: $0\check2[7:0]
+    30/31: $0\check1[7:0]
+    31/31: $0\check0[7:0]
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:26$457'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:26$60.result[7:0]$507
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:26$60.result[7:0]$501
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:26$60.result[7:0]$495
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:26$60.result[7:0]$489
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:26$60.result[7:0]$483
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:26$60.result[7:0]$477
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:26$60.result[7:0]$471
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:26$401'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$451
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$445
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$439
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$433
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$427
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$421
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$415
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:27$345'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$395
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$389
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$383
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$377
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$371
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$365
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$359
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:27$289'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:27$57.result[7:0]$339
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:27$57.result[7:0]$333
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:27$57.result[7:0]$327
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:27$57.result[7:0]$321
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:27$57.result[7:0]$315
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:27$57.result[7:0]$309
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:27$57.result[7:0]$303
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:28$233'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:28$56.result[7:0]$283
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:28$56.result[7:0]$277
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:28$56.result[7:0]$271
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:28$56.result[7:0]$265
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:28$56.result[7:0]$259
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:28$56.result[7:0]$253
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:28$56.result[7:0]$247
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:28$177'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:28$55.result[7:0]$227
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:28$55.result[7:0]$221
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:28$55.result[7:0]$215
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:28$55.result[7:0]$209
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:28$55.result[7:0]$203
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:28$55.result[7:0]$197
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:28$55.result[7:0]$191
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:29$121'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:29$54.result[7:0]$171
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:29$54.result[7:0]$165
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:29$54.result[7:0]$159
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:29$54.result[7:0]$153
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:29$54.result[7:0]$147
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:29$54.result[7:0]$141
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:29$54.result[7:0]$135
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:29$65'.
+     1/7: $8\multiply$func$rtl/flit_crc8.sv:29$53.result[7:0]$115
+     2/7: $7\multiply$func$rtl/flit_crc8.sv:29$53.result[7:0]$109
+     3/7: $6\multiply$func$rtl/flit_crc8.sv:29$53.result[7:0]$103
+     4/7: $5\multiply$func$rtl/flit_crc8.sv:29$53.result[7:0]$97
+     5/7: $4\multiply$func$rtl/flit_crc8.sv:29$53.result[7:0]$91
+     6/7: $3\multiply$func$rtl/flit_crc8.sv:29$53.result[7:0]$85
+     7/7: $2\multiply$func$rtl/flit_crc8.sv:29$53.result[7:0]$79
+Creating decoders for process `\flit_crc8.$proc$rtl/flit_crc8.sv:30$62'.
+     1/1: $0\crc[63:0]
+Creating decoders for process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+     1/3: $0\next_priority[0:0]
+     2/3: $0\owner[0:0]
+     3/3: $0\locked[0:0]
+Creating decoders for process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$702'.
+     1/1: $1$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$679_DATA[577:0]$704
+Creating decoders for process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+     1/11: $0\count[2:0]
+     2/11: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$680_ADDR[1:0]$694
+     3/11: $2$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$680_DATA[577:0]$695
+     4/11: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$680_DATA[577:0]$693
+     5/11: $1$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$680_ADDR[1:0]$692
+     6/11: $0\mem[3][577:0]
+     7/11: $0\mem[2][577:0]
+     8/11: $0\mem[1][577:0]
+     9/11: $0\mem[0][577:0]
+    10/11: $0\rd_ptr[1:0]
+    11/11: $0\wr_ptr[1:0]
+
+9.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$653_DATA' from process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$676'.
+No latch inferred for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:16$514.$result' from process `\flit_fec6.$proc$rtl/flit_fec6.sv:16$577'.
+No latch inferred for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:16$513.$result' from process `\flit_fec6.$proc$rtl/flit_fec6.sv:16$570'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:26$52.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:26$457'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:26$51.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:26$401'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:27$50.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:27$345'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:27$49.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:27$289'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:28$48.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:28$233'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:28$47.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:28$177'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:29$46.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:29$121'.
+No latch inferred for signal `\flit_crc8.\multiply$func$rtl/flit_crc8.sv:29$45.$result' from process `\flit_crc8.$proc$rtl/flit_crc8.sv:29$65'.
+No latch inferred for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$mem2reg_rd$\mem$rtl/axis_fifo.sv:30$679_DATA' from process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$702'.
+
+9.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\wr_ptr' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+  created $adff cell `$procdff$1445' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\rd_ptr' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+  created $adff cell `$procdff$1450' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\count' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+  created $adff cell `$procdff$1455' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\mem[0]' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+  created $dff cell `$procdff$1462' with positive edge clock.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.\mem[1]' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+  created $dff cell `$procdff$1469' with positive edge clock.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$654_ADDR' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+  created $adff cell `$procdff$1474' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$654_DATA' using process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+  created $adff cell `$procdff$1479' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\state' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1484' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\beat_data' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1489' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\beat_keep' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1494' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\beat_last' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1499' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\lane' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1504' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\payload' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1509' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\byte_count' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1514' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\out_beat' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1519' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\source' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1524' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\packet_active' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1529' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\first_frame' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1534' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\final_frame' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1539' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\crc_index' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1544' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.\fec_index' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1549' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.$bitselwrite$pos$rtl/axis_frame_packetizer.sv:72$584' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1554' with positive edge clock and positive level reset.
+Creating register for signal `\axis_frame_packetizer.$lookahead\payload$612' using process `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+  created $adff cell `$procdff$1559' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\check0' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1564' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\check1' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1569' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\check2' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1574' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\parity0' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1579' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\parity1' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1584' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\parity2' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1589' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\group_index' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1594' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:26$515.$result' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1599' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:26$515.value' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1604' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:27$516.$result' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1609' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:27$516.value' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1614' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:28$517.$result' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1619' with positive edge clock and positive level reset.
+Creating register for signal `\flit_fec6.\alpha$func$rtl/flit_fec6.sv:28$517.value' using process `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+  created $adff cell `$procdff$1624' with positive edge clock and positive level reset.
+Creating register for signal `\flit_crc8.\crc' using process `\flit_crc8.$proc$rtl/flit_crc8.sv:30$62'.
+  created $adff cell `$procdff$1629' with positive edge clock and positive level reset.
+Creating register for signal `\packet_rr_arbiter.\locked' using process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+  created $adff cell `$procdff$1634' with positive edge clock and positive level reset.
+Creating register for signal `\packet_rr_arbiter.\owner' using process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+  created $adff cell `$procdff$1639' with positive edge clock and positive level reset.
+Creating register for signal `\packet_rr_arbiter.\next_priority' using process `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+  created $adff cell `$procdff$1644' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\wr_ptr' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $adff cell `$procdff$1649' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\rd_ptr' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $adff cell `$procdff$1654' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\count' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $adff cell `$procdff$1659' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[0]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $dff cell `$procdff$1666' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[1]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $dff cell `$procdff$1673' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[2]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $dff cell `$procdff$1680' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.\mem[3]' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $dff cell `$procdff$1687' with positive edge clock.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$680_ADDR' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $adff cell `$procdff$1692' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$mem2reg_wr$\mem$rtl/axis_fifo.sv:36$680_DATA' using process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+  created $adff cell `$procdff$1697' with positive edge clock and positive level reset.
+
+9.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+9.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$676'.
+Removing empty process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:30$676'.
+Found and cleaned up 6 empty switches in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+Removing empty process `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$proc$rtl/axis_fifo.sv:31$662'.
+Found and cleaned up 12 empty switches in `\axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+Removing empty process `axis_frame_packetizer.$proc$rtl/axis_frame_packetizer.sv:51$613'.
+Removing empty process `flit_fec6.$proc$rtl/flit_fec6.sv:16$577'.
+Removing empty process `flit_fec6.$proc$rtl/flit_fec6.sv:16$570'.
+Found and cleaned up 3 empty switches in `\flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+Removing empty process `flit_fec6.$proc$rtl/flit_fec6.sv:17$520'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:26$457'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:26$457'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:26$401'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:26$401'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:27$345'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:27$345'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:27$289'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:27$289'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:28$233'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:28$233'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:28$177'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:28$177'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:29$121'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:29$121'.
+Found and cleaned up 7 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:29$65'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:29$65'.
+Found and cleaned up 2 empty switches in `\flit_crc8.$proc$rtl/flit_crc8.sv:30$62'.
+Removing empty process `flit_crc8.$proc$rtl/flit_crc8.sv:30$62'.
+Found and cleaned up 2 empty switches in `\packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+Removing empty process `packet_rr_arbiter.$proc$rtl/packet_rr_arbiter.sv:13$31'.
+Found and cleaned up 1 empty switch in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$702'.
+Removing empty process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:30$702'.
+Found and cleaned up 6 empty switches in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+Removing empty process `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$proc$rtl/axis_fifo.sv:31$688'.
+Cleaned up 89 empty switches.
+
+9.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~20 debug messages>
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~42 debug messages>
+Optimizing module flit_fec6.
+<suppressed ~35 debug messages>
+Optimizing module flit_crc8.
+<suppressed ~198 debug messages>
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+<suppressed ~6 debug messages>
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~21 debug messages>
+
+9.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~15 debug messages>
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 178 unused cells and 835 unused wires.
+<suppressed ~193 debug messages>
+
+9.5. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo...
+Checking module axis_link_tx...
+Checking module axis_frame_packetizer...
+Checking module flit_fec6...
+Checking module flit_crc8...
+Checking module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1...
+Checking module packet_rr_arbiter...
+Checking module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo...
+Found and reported 0 problems.
+
+9.6. Executing OPT pass (performing simple optimizations).
+
+9.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 159 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 122 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+<suppressed ~111 debug messages>
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 52 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Computing hashes of 48 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+<suppressed ~12 debug messages>
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 131 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 48 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+<suppressed ~6 debug messages>
+Removed a total of 43 cells.
+
+9.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $procmux$891: \packet_active -> 1'1
+      Replacing known input bits on port A of cell $procmux$851: \final_frame -> 1'0
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$797.
+    dead port 2/2 on $mux $procmux$774.
+    dead port 1/2 on $mux $procmux$772.
+    dead port 2/2 on $mux $procmux$761.
+    dead port 2/2 on $mux $procmux$755.
+    dead port 2/2 on $mux $procmux$753.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 6 multiplexer ports.
+<suppressed ~293 debug messages>
+
+9.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 2 changes.
+
+9.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 114 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 48 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 131 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 124 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 117 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 110 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 103 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 94 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 87 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 80 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 73 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 65 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 58 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 52 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 46 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 43 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 41 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 40 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+<suppressed ~273 debug messages>
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 91 cells.
+
+9.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 185 unused wires.
+<suppressed ~4 debug messages>
+
+9.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~199 debug messages>
+
+9.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+9.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 114 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 48 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 40 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+9.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+9.7. Executing FSM pass (extract and optimize FSM).
+
+9.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register axis_frame_packetizer.state.
+
+9.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\axis_frame_packetizer'.
+  found $adff cell for state register: $procdff$1484
+  root of input selection tree: $0\state[2:0]
+  found reset state: 3'000 (from async reset)
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:43$603_Y
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:39$597_Y
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:34$590_Y
+  found ctrl input: $procmux$1010_CMP
+  found ctrl input: $procmux$1017_CMP
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:42$601_Y
+  found ctrl input: \m_axis_tready
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:46$610_Y
+  found ctrl input: \final_frame
+  found state code: 3'001
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:89$647_Y
+  found state code: 3'101
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:85$645_Y
+  found state code: 3'100
+  found ctrl input: \beat_last
+  found state code: 3'011
+  found ctrl input: $logic_and$rtl/axis_frame_packetizer.sv:68$624_Y
+  found ctrl input: $eq$rtl/axis_frame_packetizer.sv:75$643_Y
+  found state code: 3'010
+  found ctrl input: \s_axis_tvalid
+  found ctrl output: $ne$rtl/axis_frame_packetizer.sv:34$585_Y
+  found ctrl output: $ne$rtl/axis_frame_packetizer.sv:34$586_Y
+  found ctrl output: $ne$rtl/axis_frame_packetizer.sv:34$588_Y
+  found ctrl output: $procmux$1010_CMP
+  found ctrl output: $procmux$1017_CMP
+  found ctrl output: $eq$rtl/axis_frame_packetizer.sv:42$601_Y
+  found ctrl output: $eq$rtl/axis_frame_packetizer.sv:43$603_Y
+  found ctrl output: $eq$rtl/axis_frame_packetizer.sv:39$597_Y
+  found ctrl output: $eq$rtl/axis_frame_packetizer.sv:34$590_Y
+  ctrl inputs: { $eq$rtl/axis_frame_packetizer.sv:89$647_Y $eq$rtl/axis_frame_packetizer.sv:85$645_Y $eq$rtl/axis_frame_packetizer.sv:75$643_Y $logic_and$rtl/axis_frame_packetizer.sv:68$624_Y $eq$rtl/axis_frame_packetizer.sv:46$610_Y \final_frame \beat_last \s_axis_tvalid \m_axis_tready }
+  ctrl outputs: { $procmux$1017_CMP $procmux$1010_CMP $0\state[2:0] $eq$rtl/axis_frame_packetizer.sv:43$603_Y $eq$rtl/axis_frame_packetizer.sv:42$601_Y $eq$rtl/axis_frame_packetizer.sv:39$597_Y $eq$rtl/axis_frame_packetizer.sv:34$590_Y $ne$rtl/axis_frame_packetizer.sv:34$588_Y $ne$rtl/axis_frame_packetizer.sv:34$586_Y $ne$rtl/axis_frame_packetizer.sv:34$585_Y }
+  transition:      3'000 9'-------0- ->      3'000 12'000000100111
+  transition:      3'000 9'-------1- ->      3'001 12'000010100111
+  transition:      3'100 9'0-------- ->      3'100 12'001000010101
+  transition:      3'100 9'1-------- ->      3'101 12'001010010101
+  transition:      3'010 9'------0-- ->      3'000 12'010000000111
+  transition:      3'010 9'------1-- ->      3'011 12'010110000111
+  transition:      3'001 9'--00----- ->      3'001 12'100010000111
+  transition:      3'001 9'--10----- ->      3'010 12'100100000111
+  transition:      3'001 9'---1----- ->      3'011 12'100110000111
+  transition:      3'101 9'--------0 ->      3'101 12'001011000011
+  transition:      3'101 9'----0---1 ->      3'101 12'001011000011
+  transition:      3'101 9'----10--1 ->      3'001 12'000011000011
+  transition:      3'101 9'----11--1 ->      3'000 12'000001000011
+  transition:      3'011 9'-0------- ->      3'011 12'000110001110
+  transition:      3'011 9'-1------- ->      3'100 12'001000001110
+
+9.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$1698' from module `\axis_frame_packetizer'.
+
+9.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 20 unused cells and 20 unused wires.
+<suppressed ~21 debug messages>
+
+9.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$1698' from module `\axis_frame_packetizer'.
+  Removing unused output signal $0\state[2:0] [0].
+  Removing unused output signal $0\state[2:0] [1].
+  Removing unused output signal $0\state[2:0] [2].
+
+9.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$1698' from module `\axis_frame_packetizer' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> -----1
+  100 -> ----1-
+  010 -> ---1--
+  001 -> --1---
+  101 -> -1----
+  011 -> 1-----
+
+9.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$1698' from module `axis_frame_packetizer':
+-------------------------------------
+
+  Information on FSM $fsm$\state$1698 (\state):
+
+  Number of input signals:    9
+  Number of output signals:   9
+  Number of state bits:       6
+
+  Input signals:
+    0: \m_axis_tready
+    1: \s_axis_tvalid
+    2: \beat_last
+    3: \final_frame
+    4: $eq$rtl/axis_frame_packetizer.sv:46$610_Y
+    5: $logic_and$rtl/axis_frame_packetizer.sv:68$624_Y
+    6: $eq$rtl/axis_frame_packetizer.sv:75$643_Y
+    7: $eq$rtl/axis_frame_packetizer.sv:85$645_Y
+    8: $eq$rtl/axis_frame_packetizer.sv:89$647_Y
+
+  Output signals:
+    0: $ne$rtl/axis_frame_packetizer.sv:34$585_Y
+    1: $ne$rtl/axis_frame_packetizer.sv:34$586_Y
+    2: $ne$rtl/axis_frame_packetizer.sv:34$588_Y
+    3: $eq$rtl/axis_frame_packetizer.sv:34$590_Y
+    4: $eq$rtl/axis_frame_packetizer.sv:39$597_Y
+    5: $eq$rtl/axis_frame_packetizer.sv:42$601_Y
+    6: $eq$rtl/axis_frame_packetizer.sv:43$603_Y
+    7: $procmux$1010_CMP
+    8: $procmux$1017_CMP
+
+  State encoding:
+    0:   6'-----1  <RESET STATE>
+    1:   6'----1-
+    2:   6'---1--
+    3:   6'--1---
+    4:   6'-1----
+    5:   6'1-----
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 9'-------0-   ->     0 9'000100111
+      1:     0 9'-------1-   ->     3 9'000100111
+      2:     1 9'0--------   ->     1 9'000010101
+      3:     1 9'1--------   ->     4 9'000010101
+      4:     2 9'------0--   ->     0 9'010000111
+      5:     2 9'------1--   ->     5 9'010000111
+      6:     3 9'--10-----   ->     2 9'100000111
+      7:     3 9'--00-----   ->     3 9'100000111
+      8:     3 9'---1-----   ->     5 9'100000111
+      9:     4 9'----11--1   ->     0 9'001000011
+     10:     4 9'----10--1   ->     3 9'001000011
+     11:     4 9'--------0   ->     4 9'001000011
+     12:     4 9'----0---1   ->     4 9'001000011
+     13:     5 9'-1-------   ->     1 9'000001110
+     14:     5 9'-0-------   ->     5 9'000001110
+
+-------------------------------------
+
+9.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$1698' from module `\axis_frame_packetizer'.
+
+9.8. Executing OPT pass (performing simple optimizations).
+
+9.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~11 debug messages>
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 128 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 48 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 40 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~188 debug messages>
+
+9.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+9.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 31 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 128 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 48 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 40 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 46 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$1445 ($adff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = $procmux$744_Y, Q = \wr_ptr).
+Adding EN signal on $procdff$1450 ($adff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = $procmux$738_Y, Q = \rd_ptr).
+Adding EN signal on $procdff$1462 ($dff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[0]).
+Adding EN signal on $procdff$1455 ($adff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = $0\count[1:0], Q = \count).
+Adding EN signal on $procdff$1469 ($dff) from module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[1]).
+Adding EN signal on $procdff$1514 ($adff) from module axis_frame_packetizer (D = $0\byte_count[7:0], Q = \byte_count).
+Adding EN signal on $procdff$1544 ($adff) from module axis_frame_packetizer (D = $0\crc_index[7:0], Q = \crc_index).
+Adding EN signal on $procdff$1519 ($adff) from module axis_frame_packetizer (D = $0\out_beat[2:0], Q = \out_beat).
+Adding EN signal on $procdff$1529 ($adff) from module axis_frame_packetizer (D = $0\packet_active[0:0], Q = \packet_active).
+Adding EN signal on $procdff$1504 ($adff) from module axis_frame_packetizer (D = $0\lane[5:0], Q = \lane).
+Adding EN signal on $procdff$1489 ($adff) from module axis_frame_packetizer (D = \s_axis_tdata, Q = \beat_data).
+Adding EN signal on $procdff$1509 ($adff) from module axis_frame_packetizer (D = $0$lookahead\payload$612[1887:0]$615, Q = \payload).
+Adding EN signal on $procdff$1549 ($adff) from module axis_frame_packetizer (D = $0\fec_index[7:0], Q = \fec_index).
+Adding EN signal on $procdff$1539 ($adff) from module axis_frame_packetizer (D = $0\final_frame[0:0], Q = \final_frame).
+Adding EN signal on $procdff$1499 ($adff) from module axis_frame_packetizer (D = \s_axis_tlast, Q = \beat_last).
+Adding EN signal on $procdff$1524 ($adff) from module axis_frame_packetizer (D = \s_axis_source, Q = \source).
+Adding EN signal on $procdff$1534 ($adff) from module axis_frame_packetizer (D = $procmux$871_Y, Q = \first_frame).
+Adding EN signal on $procdff$1494 ($adff) from module axis_frame_packetizer (D = \s_axis_tkeep, Q = \beat_keep).
+Adding EN signal on $procdff$1594 ($adff) from module flit_fec6 (D = $0\group_index[1:0], Q = \group_index).
+Adding EN signal on $procdff$1584 ($adff) from module flit_fec6 (D = $0\parity1[7:0], Q = \parity1).
+Adding EN signal on $procdff$1569 ($adff) from module flit_fec6 (D = $0\check1[7:0], Q = \check1).
+Adding EN signal on $procdff$1589 ($adff) from module flit_fec6 (D = $0\parity2[7:0], Q = \parity2).
+Adding EN signal on $procdff$1579 ($adff) from module flit_fec6 (D = $0\parity0[7:0], Q = \parity0).
+Adding EN signal on $procdff$1564 ($adff) from module flit_fec6 (D = $0\check0[7:0], Q = \check0).
+Adding EN signal on $procdff$1574 ($adff) from module flit_fec6 (D = $0\check2[7:0], Q = \check2).
+Adding EN signal on $procdff$1629 ($adff) from module flit_crc8 (D = $0\crc[63:0], Q = \crc).
+Adding EN signal on $procdff$1634 ($adff) from module packet_rr_arbiter (D = $procmux$1385_Y, Q = \locked).
+Adding EN signal on $procdff$1644 ($adff) from module packet_rr_arbiter (D = $not$rtl/packet_rr_arbiter.sv:17$35_Y, Q = \next_priority).
+Adding EN signal on $procdff$1639 ($adff) from module packet_rr_arbiter (D = \selected, Q = \owner).
+Adding EN signal on $procdff$1666 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[0]).
+Adding EN signal on $procdff$1687 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[3]).
+Adding EN signal on $procdff$1680 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[2]).
+Adding EN signal on $procdff$1673 ($dff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = { \s_source \s_last \s_keep \s_data }, Q = \mem[1]).
+Adding EN signal on $procdff$1649 ($adff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = $procmux$1437_Y, Q = \wr_ptr).
+Adding EN signal on $procdff$1659 ($adff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = $0\count[2:0], Q = \count).
+Adding EN signal on $procdff$1654 ($adff) from module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo (D = $procmux$1431_Y, Q = \rd_ptr).
+
+9.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 39 unused cells and 53 unused wires.
+<suppressed ~43 debug messages>
+
+9.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~1 debug messages>
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~8 debug messages>
+Optimizing module flit_fec6.
+<suppressed ~13 debug messages>
+Optimizing module flit_crc8.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~1 debug messages>
+
+9.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~137 debug messages>
+
+9.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+9.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 27 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 165 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 146 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 145 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+<suppressed ~60 debug messages>
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 67 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Computing hashes of 58 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Computing hashes of 55 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+<suppressed ~36 debug messages>
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 41 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 37 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 32 cells.
+
+9.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 32 unused wires.
+<suppressed ~2 debug messages>
+
+9.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~137 debug messages>
+
+9.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+9.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 27 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 145 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 55 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 41 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 37 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+9.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+9.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.$procmux$718_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell axis_frame_packetizer.$auto$opt_dff.cc:320:make_patterns_logic$1875 ($ne).
+Removed top 1 bits (of 2) from port B of cell axis_frame_packetizer.$auto$opt_dff.cc:320:make_patterns_logic$1866 ($ne).
+Removed top 1 bits (of 2) from port B of cell axis_frame_packetizer.$auto$opt_dff.cc:320:make_patterns_logic$1864 ($ne).
+Removed top 1 bits (of 2) from port B of cell axis_frame_packetizer.$auto$opt_dff.cc:320:make_patterns_logic$1837 ($ne).
+Removed top 1 bits (of 2) from port B of cell axis_frame_packetizer.$auto$opt_dff.cc:320:make_patterns_logic$1826 ($ne).
+Removed top 1 bits (of 2) from port B of cell axis_frame_packetizer.$auto$opt_dff.cc:320:make_patterns_logic$1824 ($ne).
+Removed top 1 bits (of 2) from port B of cell axis_frame_packetizer.$auto$fsm_map.cc:77:implement_pattern_cache$1757 ($eq).
+Removed top 20 bits (of 32) from port B of cell axis_frame_packetizer.$shiftx$rtl/axis_frame_packetizer.sv:35$593 ($shiftx).
+Removed top 20 bits (of 32) from port B of cell axis_frame_packetizer.$shiftx$rtl/axis_frame_packetizer.sv:40$600 ($shiftx).
+Removed top 20 bits (of 32) from port B of cell axis_frame_packetizer.$shiftx$rtl/axis_frame_packetizer.sv:44$607 ($shiftx).
+Removed top 22 bits (of 32) from port B of cell axis_frame_packetizer.$shiftx$rtl/axis_frame_packetizer.sv:72$638 ($shiftx).
+Removed top 21 bits (of 33) from port A of cell axis_frame_packetizer.$neg$rtl/axis_frame_packetizer.sv:72$639 ($neg).
+Converting cell axis_frame_packetizer.$neg$rtl/axis_frame_packetizer.sv:72$639 ($neg) from signed to unsigned.
+Removed top 1 bits (of 12) from port A of cell axis_frame_packetizer.$neg$rtl/axis_frame_packetizer.sv:72$639 ($neg).
+Removed top 3 bits (of 8) from mux cell flit_fec6.$ternary$rtl/flit_fec6.sv:12$554 ($mux).
+Removed top 3 bits (of 8) from port B of cell flit_fec6.$xor$rtl/flit_fec6.sv:12$555 ($xor).
+Removed top 3 bits (of 8) from mux cell flit_fec6.$ternary$rtl/flit_fec6.sv:12$559 ($mux).
+Removed top 3 bits (of 8) from port B of cell flit_fec6.$xor$rtl/flit_fec6.sv:12$560 ($xor).
+Removed top 3 bits (of 8) from mux cell flit_fec6.$ternary$rtl/flit_fec6.sv:12$564 ($mux).
+Removed top 3 bits (of 8) from port B of cell flit_fec6.$xor$rtl/flit_fec6.sv:12$565 ($xor).
+Removed top 3 bits (of 8) from mux cell flit_fec6.$ternary$rtl/flit_fec6.sv:12$575 ($mux).
+Removed top 3 bits (of 8) from port B of cell flit_fec6.$xor$rtl/flit_fec6.sv:12$576 ($xor).
+Removed top 3 bits (of 8) from mux cell flit_fec6.$ternary$rtl/flit_fec6.sv:12$582 ($mux).
+Removed top 3 bits (of 8) from port B of cell flit_fec6.$xor$rtl/flit_fec6.sv:12$583 ($xor).
+Removed top 1 bits (of 2) from port B of cell flit_fec6.$procmux$1154_CMP0 ($eq).
+Removed top 3 bits (of 8) from wire flit_fec6.$ternary$rtl/flit_fec6.sv:12$582_Y.
+Removed top 3 bits (of 8) from wire flit_fec6.$ternary$rtl/flit_fec6.sv:12$575_Y.
+Removed top 3 bits (of 8) from wire flit_fec6.$ternary$rtl/flit_fec6.sv:12$564_Y.
+Removed top 3 bits (of 8) from wire flit_fec6.$ternary$rtl/flit_fec6.sv:12$559_Y.
+Removed top 3 bits (of 8) from wire flit_fec6.$ternary$rtl/flit_fec6.sv:12$554_Y.
+Removed top 2 bits (of 8) from mux cell flit_crc8.$ternary$rtl/flit_crc8.sv:18$156 ($mux).
+Removed top 2 bits (of 8) from mux cell flit_crc8.$ternary$rtl/flit_crc8.sv:18$194 ($mux).
+Removed top 2 bits (of 8) from port B of cell flit_crc8.$xor$rtl/flit_crc8.sv:18$195 ($xor).
+Removed top 2 bits (of 8) from mux cell flit_crc8.$ternary$rtl/flit_crc8.sv:18$200 ($mux).
+Removed top 2 bits (of 8) from port B of cell flit_crc8.$xor$rtl/flit_crc8.sv:18$257 ($xor).
+Removed top 2 bits (of 8) from port B of cell flit_crc8.$xor$rtl/flit_crc8.sv:18$269 ($xor).
+Removed top 2 bits (of 8) from mux cell flit_crc8.$ternary$rtl/flit_crc8.sv:18$386 ($mux).
+Removed top 2 bits (of 8) from mux cell flit_crc8.$ternary$rtl/flit_crc8.sv:18$392 ($mux).
+Removed top 2 bits (of 8) from port B of cell flit_crc8.$xor$rtl/flit_crc8.sv:18$393 ($xor).
+Removed top 2 bits (of 8) from mux cell flit_crc8.$ternary$rtl/flit_crc8.sv:18$412 ($mux).
+Removed top 2 bits (of 8) from mux cell flit_crc8.$ternary$rtl/flit_crc8.sv:18$486 ($mux).
+Removed top 2 bits (of 8) from wire flit_crc8.$ternary$rtl/flit_crc8.sv:18$138_Y.
+Removed top 2 bits (of 8) from wire flit_crc8.$ternary$rtl/flit_crc8.sv:18$150_Y.
+Removed top 2 bits (of 8) from wire flit_crc8.$ternary$rtl/flit_crc8.sv:18$106_Y.
+Removed top 2 bits (of 8) from wire flit_crc8.$ternary$rtl/flit_crc8.sv:18$100_Y.
+Removed top 2 bits (of 8) from wire flit_crc8.$ternary$rtl/flit_crc8.sv:18$144_Y.
+Removed top 2 bits (of 8) from wire flit_crc8.$ternary$rtl/flit_crc8.sv:18$132_Y.
+Removed top 2 bits (of 8) from wire flit_crc8.$ternary$rtl/flit_crc8.sv:18$336_Y.
+Removed top 1 bits (of 2) from port B of cell $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$procmux$1392_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$procmux$1396_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.$procmux$1419_CMP0 ($eq).
+
+9.10. Executing PEEPOPT pass (run peephole optimizers).
+shiftpow2 pattern in axis_frame_packetizer: shift=$shiftx$rtl/axis_frame_packetizer.sv:72$638, index=\lane, stride=8, width=8, ways=64
+shiftpow2 pattern in axis_frame_packetizer: shift=$shiftx$rtl/axis_frame_packetizer.sv:44$607, index=\out_beat, stride=256, width=256, ways=8
+shiftpow2 pattern in axis_frame_packetizer: shift=$shiftx$rtl/axis_frame_packetizer.sv:40$600, index=\fec_index, stride=8, width=8, ways=256
+shiftpow2 pattern in axis_frame_packetizer: shift=$shiftx$rtl/axis_frame_packetizer.sv:35$593, index=\crc_index, stride=8, width=8, ways=256
+
+9.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 12 unused wires.
+<suppressed ~2 debug messages>
+
+9.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo:
+  creating $macc model for $sub$rtl/axis_fifo.sv:44$675 ($sub).
+  creating $macc model for $add$rtl/axis_fifo.sv:43$674 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:40$673 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:37$671 ($add).
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:37$671.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:40$673.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:43$674.
+  creating $alu model for $macc $sub$rtl/axis_fifo.sv:44$675.
+  creating $alu model for $lt$rtl/axis_fifo.sv:28$657 ($lt): new $alu
+  creating $alu cell for $lt$rtl/axis_fifo.sv:28$657: $auto$alumacc.cc:548:replace_alu$1996
+  creating $alu cell for $sub$rtl/axis_fifo.sv:44$675: $auto$alumacc.cc:548:replace_alu$2001
+  creating $alu cell for $add$rtl/axis_fifo.sv:43$674: $auto$alumacc.cc:548:replace_alu$2004
+  creating $alu cell for $add$rtl/axis_fifo.sv:40$673: $auto$alumacc.cc:548:replace_alu$2007
+  creating $alu cell for $add$rtl/axis_fifo.sv:37$671: $auto$alumacc.cc:548:replace_alu$2010
+  created 5 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module axis_link_tx:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module axis_frame_packetizer:
+  creating $macc model for $add$rtl/axis_frame_packetizer.sv:101$652 ($add).
+  creating $macc model for $add$rtl/axis_frame_packetizer.sv:90$648 ($add).
+  creating $macc model for $add$rtl/axis_frame_packetizer.sv:86$646 ($add).
+  creating $macc model for $add$rtl/axis_frame_packetizer.sv:76$644 ($add).
+  creating $macc model for $add$rtl/axis_frame_packetizer.sv:73$642 ($add).
+  creating $macc model for $neg$rtl/axis_frame_packetizer.sv:72$639 ($neg).
+  creating $alu model for $macc $neg$rtl/axis_frame_packetizer.sv:72$639.
+  creating $alu model for $macc $add$rtl/axis_frame_packetizer.sv:73$642.
+  creating $alu model for $macc $add$rtl/axis_frame_packetizer.sv:76$644.
+  creating $alu model for $macc $add$rtl/axis_frame_packetizer.sv:86$646.
+  creating $alu model for $macc $add$rtl/axis_frame_packetizer.sv:90$648.
+  creating $alu model for $macc $add$rtl/axis_frame_packetizer.sv:101$652.
+  creating $alu cell for $add$rtl/axis_frame_packetizer.sv:101$652: $auto$alumacc.cc:548:replace_alu$2013
+  creating $alu cell for $add$rtl/axis_frame_packetizer.sv:90$648: $auto$alumacc.cc:548:replace_alu$2016
+  creating $alu cell for $add$rtl/axis_frame_packetizer.sv:86$646: $auto$alumacc.cc:548:replace_alu$2019
+  creating $alu cell for $add$rtl/axis_frame_packetizer.sv:76$644: $auto$alumacc.cc:548:replace_alu$2022
+  creating $alu cell for $add$rtl/axis_frame_packetizer.sv:73$642: $auto$alumacc.cc:548:replace_alu$2025
+  creating $alu cell for $neg$rtl/axis_frame_packetizer.sv:72$639: $auto$alumacc.cc:548:replace_alu$2028
+  created 6 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module flit_fec6:
+  creating $macc model for $add$rtl/flit_fec6.sv:31$568 ($add).
+  creating $alu model for $macc $add$rtl/flit_fec6.sv:31$568.
+  creating $alu cell for $add$rtl/flit_fec6.sv:31$568: $auto$alumacc.cc:548:replace_alu$2031
+  created 1 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module flit_crc8:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module packet_rr_arbiter:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo:
+  creating $macc model for $sub$rtl/axis_fifo.sv:44$701 ($sub).
+  creating $macc model for $add$rtl/axis_fifo.sv:43$700 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:40$699 ($add).
+  creating $macc model for $add$rtl/axis_fifo.sv:37$697 ($add).
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:37$697.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:40$699.
+  creating $alu model for $macc $add$rtl/axis_fifo.sv:43$700.
+  creating $alu model for $macc $sub$rtl/axis_fifo.sv:44$701.
+  creating $alu model for $lt$rtl/axis_fifo.sv:28$683 ($lt): new $alu
+  creating $alu cell for $lt$rtl/axis_fifo.sv:28$683: $auto$alumacc.cc:548:replace_alu$2035
+  creating $alu cell for $sub$rtl/axis_fifo.sv:44$701: $auto$alumacc.cc:548:replace_alu$2040
+  creating $alu cell for $add$rtl/axis_fifo.sv:43$700: $auto$alumacc.cc:548:replace_alu$2043
+  creating $alu cell for $add$rtl/axis_fifo.sv:40$699: $auto$alumacc.cc:548:replace_alu$2046
+  creating $alu cell for $add$rtl/axis_fifo.sv:37$697: $auto$alumacc.cc:548:replace_alu$2049
+  created 5 $alu and 0 $macc cells.
+
+9.13. Executing SHARE pass (SAT-based resource sharing).
+
+9.14. Executing OPT pass (performing simple optimizations).
+
+9.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 28 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 145 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 55 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 41 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 38 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~137 debug messages>
+
+9.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+9.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 28 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 145 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 55 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 41 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 38 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~2 debug messages>
+
+9.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~137 debug messages>
+
+9.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+9.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 28 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 145 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 55 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 41 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 14 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 38 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+9.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+9.15. Executing MEMORY pass.
+
+9.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+9.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+9.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+9.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+9.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+9.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+9.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+9.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+9.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+9.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+9.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+9.17. Executing OPT pass (performing simple optimizations).
+
+9.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~3 debug messages>
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~36 debug messages>
+Optimizing module flit_fec6.
+<suppressed ~38 debug messages>
+Optimizing module flit_crc8.
+<suppressed ~41 debug messages>
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+<suppressed ~2 debug messages>
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~3 debug messages>
+
+9.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 29 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 117 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 42 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 40 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 13 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 40 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 1 cells.
+
+9.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 5 unused cells and 74 unused wires.
+<suppressed ~11 debug messages>
+
+9.17.5. Finished fast OPT passes.
+
+9.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+9.19. Executing OPT pass (performing simple optimizations).
+
+9.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~1 debug messages>
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 27 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 117 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 42 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 40 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 37 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~89 debug messages>
+
+9.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+    New ctrl vector for $pmux cell $procmux$837: \state [5]
+    New ctrl vector for $pmux cell $procmux$857: \state [2]
+    Consolidated identical input bits for $mux cell $ternary$rtl/axis_frame_packetizer.sv:45$609:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=\m_axis_tkeep
+      New ports: A=1'0, B=1'1, Y=\m_axis_tkeep [0]
+      New connections: \m_axis_tkeep [31:1] = { \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] \m_axis_tkeep [0] }
+    New ctrl vector for $pmux cell $procmux$915: \state [4]
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_fec6.sv:12$582:
+      Old ports: A=5'00000, B=5'11101, Y={ $auto$wreduce.cc:514:run$1979 [4:1] \fec [8] }
+      New ports: A=1'0, B=1'1, Y=\fec [8]
+      New connections: $auto$wreduce.cc:514:run$1979 [4:1] = { \fec [8] \fec [8] \fec [8] 1'0 }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_fec6.sv:12$575:
+      Old ports: A=5'00000, B=5'11101, Y={ $auto$wreduce.cc:514:run$1980 [4:1] \fec [0] }
+      New ports: A=1'0, B=1'1, Y=\fec [0]
+      New connections: $auto$wreduce.cc:514:run$1980 [4:1] = { \fec [0] \fec [0] \fec [0] 1'0 }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_fec6.sv:12$564:
+      Old ports: A=5'00000, B=5'11101, Y={ $auto$wreduce.cc:514:run$1981 [4:1] $auto$opt_expr.cc:206:group_cell_inputs$2062 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2062 [0]
+      New connections: $auto$wreduce.cc:514:run$1981 [4:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2062 [0] $auto$opt_expr.cc:206:group_cell_inputs$2062 [0] $auto$opt_expr.cc:206:group_cell_inputs$2062 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_fec6.sv:12$559:
+      Old ports: A=5'00000, B=5'11101, Y={ $auto$wreduce.cc:514:run$1982 [4:1] $auto$opt_expr.cc:206:group_cell_inputs$2059 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2059 [0]
+      New connections: $auto$wreduce.cc:514:run$1982 [4:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2059 [0] $auto$opt_expr.cc:206:group_cell_inputs$2059 [0] $auto$opt_expr.cc:206:group_cell_inputs$2059 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_fec6.sv:12$554:
+      Old ports: A=5'00000, B=5'11101, Y={ $auto$wreduce.cc:514:run$1983 [4:1] $auto$opt_expr.cc:206:group_cell_inputs$2056 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2056 [0]
+      New connections: $auto$wreduce.cc:514:run$1983 [4:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2056 [0] $auto$opt_expr.cc:206:group_cell_inputs$2056 [0] $auto$opt_expr.cc:206:group_cell_inputs$2056 [0] 1'0 }
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_crc8.sv:18$200:
+      Old ports: A=6'000000, B=6'101011, Y={ $auto$wreduce.cc:514:run$1988 [5:1] $4\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$427 [0] }
+      New ports: A=1'0, B=1'1, Y=$4\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$427 [0]
+      New connections: $auto$wreduce.cc:514:run$1988 [5:1] = { $4\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$427 [0] 1'0 $4\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$427 [0] 1'0 $4\multiply$func$rtl/flit_crc8.sv:26$59.result[7:0]$427 [0] }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_crc8.sv:18$486:
+      Old ports: A=6'000000, B=6'101011, Y={ $auto$wreduce.cc:514:run$1985 [5:1] $auto$opt_expr.cc:206:group_cell_inputs$2080 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2080 [0]
+      New connections: $auto$wreduce.cc:514:run$1985 [5:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2080 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2080 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2080 [0] }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_crc8.sv:18$412:
+      Old ports: A=6'000000, B=6'101011, Y={ $auto$wreduce.cc:514:run$1989 [5:1] $2\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$359 [0] }
+      New ports: A=1'0, B=1'1, Y=$2\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$359 [0]
+      New connections: $auto$wreduce.cc:514:run$1989 [5:1] = { $2\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$359 [0] 1'0 $2\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$359 [0] 1'0 $2\multiply$func$rtl/flit_crc8.sv:27$58.result[7:0]$359 [0] }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_crc8.sv:18$194:
+      Old ports: A=6'000000, B=6'101011, Y={ $auto$wreduce.cc:514:run$1984 [5:1] $auto$opt_expr.cc:206:group_cell_inputs$2074 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2074 [0]
+      New connections: $auto$wreduce.cc:514:run$1984 [5:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2074 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2074 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2074 [0] }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_crc8.sv:18$386:
+      Old ports: A=6'000000, B=6'101011, Y={ $auto$wreduce.cc:514:run$1986 [5:1] $auto$opt_expr.cc:206:group_cell_inputs$2086 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2086 [0]
+      New connections: $auto$wreduce.cc:514:run$1986 [5:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2086 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2086 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2086 [0] }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_crc8.sv:18$392:
+      Old ports: A=6'000000, B=6'101011, Y={ $auto$wreduce.cc:514:run$1990 [5:1] $auto$opt_expr.cc:206:group_cell_inputs$2089 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2089 [0]
+      New connections: $auto$wreduce.cc:514:run$1990 [5:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2089 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2089 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2089 [0] }
+    Consolidated identical input bits for $mux cell $ternary$rtl/flit_crc8.sv:18$156:
+      Old ports: A=6'000000, B=6'101011, Y={ $auto$wreduce.cc:514:run$1987 [5:1] $auto$opt_expr.cc:206:group_cell_inputs$2083 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:206:group_cell_inputs$2083 [0]
+      New connections: $auto$wreduce.cc:514:run$1987 [5:1] = { $auto$opt_expr.cc:206:group_cell_inputs$2083 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2083 [0] 1'0 $auto$opt_expr.cc:206:group_cell_inputs$2083 [0] }
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 16 changes.
+
+9.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 27 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 117 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 42 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 40 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 37 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.19.6. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $mux $procmux$717 in front of them:
+        $auto$alumacc.cc:548:replace_alu$2001
+        $auto$alumacc.cc:548:replace_alu$2004
+
+    Found cells that share an operand and can be merged by moving the $mux $procmux$1395 in front of them:
+        $auto$alumacc.cc:548:replace_alu$2040
+        $auto$alumacc.cc:548:replace_alu$2043
+
+9.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 24 unused wires.
+<suppressed ~4 debug messages>
+
+9.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~2 debug messages>
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~2 debug messages>
+Optimizing module flit_fec6.
+<suppressed ~30 debug messages>
+Optimizing module flit_crc8.
+<suppressed ~42 debug messages>
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~2 debug messages>
+
+9.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~61 debug messages>
+
+9.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:244:merge_operators$2100:
+      Old ports: A=2'11, B=2'01, Y=$auto$rtlil.cc:3402:Mux$2101
+      New ports: A=1'1, B=1'0, Y=$auto$rtlil.cc:3402:Mux$2101 [1]
+      New connections: $auto$rtlil.cc:3402:Mux$2101 [0] = 1'1
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:244:merge_operators$2107:
+      Old ports: A=3'111, B=3'001, Y=$auto$rtlil.cc:3402:Mux$2108
+      New ports: A=1'1, B=1'0, Y=$auto$rtlil.cc:3402:Mux$2108 [1]
+      New connections: { $auto$rtlil.cc:3402:Mux$2108 [2] $auto$rtlil.cc:3402:Mux$2108 [0] } = { $auto$rtlil.cc:3402:Mux$2108 [1] 1'1 }
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 2 changes.
+
+9.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 26 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 115 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 37 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 33 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 36 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.19.14. Executing OPT_SHARE pass.
+
+9.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 0 unused cells and 38 unused wires.
+<suppressed ~5 debug messages>
+
+9.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~1 debug messages>
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~1 debug messages>
+
+9.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \axis_link_tx..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \axis_frame_packetizer..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_fec6..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \flit_crc8..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~57 debug messages>
+
+9.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+  Optimizing cells in module \axis_link_tx.
+  Optimizing cells in module \axis_frame_packetizer.
+  Optimizing cells in module \flit_fec6.
+  Optimizing cells in module \flit_crc8.
+  Optimizing cells in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+  Optimizing cells in module \packet_rr_arbiter.
+  Optimizing cells in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+Performed a total of 0 changes.
+
+9.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 26 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 115 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 37 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 33 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 12 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 12 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 36 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Removed a total of 0 cells.
+
+9.19.22. Executing OPT_SHARE pass.
+
+9.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+
+9.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+Optimizing module flit_fec6.
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+
+9.19.26. Finished fast OPT passes. (There is nothing left to do.)
+
+9.20. Executing TECHMAP pass (map to technology primitives).
+
+9.20.1. Executing Verilog-2005 frontend: /share/techmap.v
+Parsing Verilog input from `/share/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+9.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod$78e969f2586efcf3a5b0b0440bcca0db83d5cca2\_90_alu for cells of type $alu.
+Using template $paramod$fc972a7a46956c1788f3cb5257b53c8f1df2d0cc\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000001 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000001 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$constmap:de554f9cc18e049d5b7dc95f0bcf8e03e57019ff$paramod$1e265d9719406ee45a570be27d6567e3eeff81e5\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$31b3272de9494c923ffcf0520c4f324d36c33cf5\_90_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_90_alu for cells of type $alu.
+Using template $paramod$32efbfac1c4dc57230cf86180788fdfd12e3b511\_90_alu for cells of type $alu.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $bmux.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod$constmap:dba4f2067ffa567551fb10fb06b704ab22ef6e36$paramod$05fd02ee8975e559bee57b6e5e564b3ecd2ab687\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$constmap:299b0e2220c099139f674fb823686c460ae302dd$paramod$8aeae880a7c55f986aef51be845214bb67e4b9f0\_90_shift_shiftx for cells of type $shift.
+Analyzing pattern of constant bits for this cell:
+Creating constmapped module `$paramod$constmap:dcdc98667947a9b6518cc52d15d6322976622522$paramod$8aeae880a7c55f986aef51be845214bb67e4b9f0\_90_shift_shiftx'.
+
+9.20.50. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$constmap:dcdc98667947a9b6518cc52d15d6322976622522$paramod$8aeae880a7c55f986aef51be845214bb67e4b9f0\_90_shift_shiftx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$22476.
+    dead port 2/2 on $mux $procmux$22482.
+    dead port 2/2 on $mux $procmux$22488.
+    dead port 2/2 on $mux $procmux$22494.
+    dead port 2/2 on $mux $procmux$22500.
+    dead port 2/2 on $mux $procmux$22506.
+    dead port 2/2 on $mux $procmux$22512.
+    dead port 2/2 on $mux $procmux$22518.
+    dead port 2/2 on $mux $procmux$22524.
+    dead port 2/2 on $mux $procmux$22530.
+    dead port 2/2 on $mux $procmux$22536.
+    dead port 2/2 on $mux $procmux$22542.
+Removed 12 multiplexer ports.
+<suppressed ~1844 debug messages>
+
+9.20.51. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$constmap:dcdc98667947a9b6518cc52d15d6322976622522$paramod$8aeae880a7c55f986aef51be845214bb67e4b9f0\_90_shift_shiftx.
+<suppressed ~22 debug messages>
+Removed 0 unused cells and 17 unused wires.
+Using template $paramod$constmap:dcdc98667947a9b6518cc52d15d6322976622522$paramod$8aeae880a7c55f986aef51be845214bb67e4b9f0\_90_shift_shiftx for cells of type $shift.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000110 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000110 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100001 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+Using template $paramod$7e708ae28ab761f11d0fb59d3ffc72f6a4baf5d9\_90_alu for cells of type $alu.
+No more expansions possible.
+<suppressed ~954 debug messages>
+
+9.21. Executing OPT pass (performing simple optimizations).
+
+9.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo.
+<suppressed ~51 debug messages>
+Optimizing module axis_link_tx.
+Optimizing module axis_frame_packetizer.
+<suppressed ~160191 debug messages>
+Optimizing module flit_fec6.
+<suppressed ~23 debug messages>
+Optimizing module flit_crc8.
+Optimizing module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1.
+Optimizing module packet_rr_arbiter.
+<suppressed ~3 debug messages>
+Optimizing module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo.
+<suppressed ~85 debug messages>
+
+9.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 2348 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Computing hashes of 2343 cells of `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+Finding duplicate cells in `$paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo'.
+<suppressed ~15 debug messages>
+Finding identical cells in module `\axis_link_tx'.
+Computing hashes of 2 cells of `\axis_link_tx'.
+Finding duplicate cells in `\axis_link_tx'.
+Finding identical cells in module `\axis_frame_packetizer'.
+Computing hashes of 33894 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 33785 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 33743 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 33713 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 33677 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 33613 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 33493 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 33261 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 32805 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 31901 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 30101 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 26509 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24856 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24855 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24854 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24853 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24852 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24851 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24850 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24849 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+Computing hashes of 24848 cells of `\axis_frame_packetizer'.
+Finding duplicate cells in `\axis_frame_packetizer'.
+<suppressed ~27138 debug messages>
+Finding identical cells in module `\flit_fec6'.
+Computing hashes of 185 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+Computing hashes of 182 cells of `\flit_fec6'.
+Finding duplicate cells in `\flit_fec6'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `\flit_crc8'.
+Computing hashes of 382 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 371 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+Computing hashes of 370 cells of `\flit_crc8'.
+Finding duplicate cells in `\flit_crc8'.
+<suppressed ~36 debug messages>
+Finding identical cells in module `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Computing hashes of 586 cells of `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding duplicate cells in `$paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1'.
+Finding identical cells in module `\packet_rr_arbiter'.
+Computing hashes of 16 cells of `\packet_rr_arbiter'.
+Finding duplicate cells in `\packet_rr_arbiter'.
+Finding identical cells in module `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 6439 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Computing hashes of 6423 cells of `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+Finding duplicate cells in `$paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo'.
+<suppressed ~48 debug messages>
+Removed a total of 9082 cells.
+
+9.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo..
+Finding unused cells or wires in module \axis_link_tx..
+Finding unused cells or wires in module \axis_frame_packetizer..
+Finding unused cells or wires in module \flit_fec6..
+Finding unused cells or wires in module \flit_crc8..
+Finding unused cells or wires in module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1..
+Finding unused cells or wires in module \packet_rr_arbiter..
+Finding unused cells or wires in module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo..
+Removed 3032 unused cells and 1134 unused wires.
+<suppressed ~3038 debug messages>
+
+9.21.5. Finished fast OPT passes.
+
+9.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `axis_link_tx'. Setting top module to axis_link_tx.
+
+9.22.1. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+Used module:         $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:         \packet_rr_arbiter
+Used module:         $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+
+9.22.2. Analyzing design hierarchy..
+Top module:  \axis_link_tx
+Used module:     \axis_frame_packetizer
+Used module:         \flit_fec6
+Used module:         \flit_crc8
+Used module:     $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+Used module:         $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+Used module:         \packet_rr_arbiter
+Used module:         $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+Removed 0 unused modules.
+
+9.23. Printing statistics.
+
+=== $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       41 wires
+     2925 wire bits
+       21 public wires
+     2324 public wire bits
+       14 ports
+     1162 port bits
+     2340 cells
+        8   $_AND_
+        4   $_DFFE_PN0P_
+     1156   $_DFFE_PP_
+     1158   $_MUX_
+        8   $_NOT_
+        4   $_OR_
+        2   $_XOR_
+
+=== axis_link_tx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       27 wires
+     2042 wire bits
+       27 public wires
+     2042 public wire bits
+       21 ports
+     1462 port bits
+        2 submodules
+        1   $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+        1   axis_frame_packetizer
+
+=== axis_frame_packetizer ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      282 wires
+   159649 wire bits
+       36 public wires
+     9488 public wire bits
+       17 ports
+      884 port bits
+    21825 cells
+     1979   $_AND_
+     2501   $_DFFE_PN0P_
+        1   $_DFFE_PN1P_
+        5   $_DFF_PN0_
+        1   $_DFF_PN1_
+    15037   $_MUX_
+      288   $_NOT_
+     1977   $_OR_
+       36   $_XOR_
+        2 submodules
+        1   flit_crc8
+        1   flit_fec6
+
+=== flit_fec6 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       51 wires
+      268 wire bits
+       15 public wires
+      126 public wire bits
+        6 ports
+       60 port bits
+      181 cells
+        3   $_AND_
+       50   $_DFFE_PN0P_
+       52   $_MUX_
+        5   $_NOT_
+        7   $_OR_
+       64   $_XOR_
+
+=== flit_crc8 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       78 wires
+      985 wire bits
+       55 public wires
+      716 public wire bits
+        6 ports
+       76 port bits
+      370 cells
+       64   $_DFFE_PN0P_
+       64   $_MUX_
+        1   $_OR_
+      241   $_XOR_
+
+=== $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       36 wires
+     3480 wire bits
+       32 public wires
+     2902 public wire bits
+       18 ports
+     1740 port bits
+      582 cells
+        3   $_AND_
+      578   $_MUX_
+        1   $_NOT_
+        4 submodules
+        1   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+        2   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+        1   packet_rr_arbiter
+
+=== packet_rr_arbiter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       19 wires
+       20 wire bits
+        9 public wires
+       10 public wire bits
+        6 ports
+        7 port bits
+       14 cells
+        3   $_AND_
+        3   $_DFFE_PN0P_
+        3   $_MUX_
+        4   $_NOT_
+        1   $_OR_
+
+=== $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2958 wires
+     7013 wire bits
+       23 public wires
+     3483 public wire bits
+       14 ports
+     1162 port bits
+     6418 cells
+     1745   $_AND_
+        7   $_DFFE_PN0P_
+     2312   $_DFFE_PP_
+     1160   $_MUX_
+       17   $_NOT_
+     1171   $_OR_
+        6   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+    38148 axis_link_tx
+      582 $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+     2340   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+     6418   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+       14   packet_rr_arbiter
+    21825 axis_frame_packetizer
+      370   flit_crc8
+      181   flit_fec6
+
+        +----------Count including submodules.
+        | 
+     6450 wires
+   183395 wire bits
+      241 public wires
+    24574 public wire bits
+      116 ports
+     7715 port bits
+        - memories
+        - memory bits
+        - processes
+    38148 cells
+     5486   $_AND_
+     2636   $_DFFE_PN0P_
+        1   $_DFFE_PN1P_
+     5780   $_DFFE_PP_
+        5   $_DFF_PN0_
+        1   $_DFF_PN1_
+    19212   $_MUX_
+      340   $_NOT_
+     4332   $_OR_
+      355   $_XOR_
+        2 submodules
+        1   $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+        1   axis_frame_packetizer
+
+9.24. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo...
+Checking module axis_link_tx...
+Checking module axis_frame_packetizer...
+Checking module flit_fec6...
+Checking module flit_crc8...
+Checking module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1...
+Checking module packet_rr_arbiter...
+Checking module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo...
+Found and reported 0 problems.
+
+10. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo...
+Checking module axis_link_tx...
+Checking module axis_frame_packetizer...
+Checking module flit_fec6...
+Checking module flit_crc8...
+Checking module $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1...
+Checking module packet_rr_arbiter...
+Checking module $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo...
+Found and reported 0 problems.
+
+11. Printing statistics.
+
+=== $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       41 wires
+     2925 wire bits
+       21 public wires
+     2324 public wire bits
+       14 ports
+     1162 port bits
+     2340 cells
+        8   $_AND_
+        4   $_DFFE_PN0P_
+     1156   $_DFFE_PP_
+     1158   $_MUX_
+        8   $_NOT_
+        4   $_OR_
+        2   $_XOR_
+
+=== axis_link_tx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       27 wires
+     2042 wire bits
+       27 public wires
+     2042 public wire bits
+       21 ports
+     1462 port bits
+        2 submodules
+        1   $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+        1   axis_frame_packetizer
+
+=== axis_frame_packetizer ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      282 wires
+   159649 wire bits
+       36 public wires
+     9488 public wire bits
+       17 ports
+      884 port bits
+    21825 cells
+     1979   $_AND_
+     2501   $_DFFE_PN0P_
+        1   $_DFFE_PN1P_
+        5   $_DFF_PN0_
+        1   $_DFF_PN1_
+    15037   $_MUX_
+      288   $_NOT_
+     1977   $_OR_
+       36   $_XOR_
+        2 submodules
+        1   flit_crc8
+        1   flit_fec6
+
+=== flit_fec6 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       51 wires
+      268 wire bits
+       15 public wires
+      126 public wire bits
+        6 ports
+       60 port bits
+      181 cells
+        3   $_AND_
+       50   $_DFFE_PN0P_
+       52   $_MUX_
+        5   $_NOT_
+        7   $_OR_
+       64   $_XOR_
+
+=== flit_crc8 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       78 wires
+      985 wire bits
+       55 public wires
+      716 public wire bits
+        6 ports
+       76 port bits
+      370 cells
+       64   $_DFFE_PN0P_
+       64   $_MUX_
+        1   $_OR_
+      241   $_XOR_
+
+=== $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       36 wires
+     3480 wire bits
+       32 public wires
+     2902 public wire bits
+       18 ports
+     1740 port bits
+      582 cells
+        3   $_AND_
+      578   $_MUX_
+        1   $_NOT_
+        4 submodules
+        1   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+        2   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+        1   packet_rr_arbiter
+
+=== packet_rr_arbiter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       19 wires
+       20 wire bits
+        9 public wires
+       10 public wire bits
+        6 ports
+        7 port bits
+       14 cells
+        3   $_AND_
+        3   $_DFFE_PN0P_
+        3   $_MUX_
+        4   $_NOT_
+        1   $_OR_
+
+=== $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2958 wires
+     7013 wire bits
+       23 public wires
+     3483 public wire bits
+       14 ports
+     1162 port bits
+     6418 cells
+     1745   $_AND_
+        7   $_DFFE_PN0P_
+     2312   $_DFFE_PP_
+     1160   $_MUX_
+       17   $_NOT_
+     1171   $_OR_
+        6   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+    38148 axis_link_tx
+      582 $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+     2340   $paramod$5bd32c07bcd28ead15edc321bc5c7db7d84897d6\axis_fifo
+     6418   $paramod$d965defec0f76e8e57567fc5cd8481f91a1adce5\axis_fifo
+       14   packet_rr_arbiter
+    21825 axis_frame_packetizer
+      370   flit_crc8
+      181   flit_fec6
+
+        +----------Count including submodules.
+        | 
+     6450 wires
+   183395 wire bits
+      241 public wires
+    24574 public wire bits
+      116 ports
+     7715 port bits
+        - memories
+        - memory bits
+        - processes
+    38148 cells
+     5486   $_AND_
+     2636   $_DFFE_PN0P_
+        1   $_DFFE_PN1P_
+     5780   $_DFFE_PP_
+        5   $_DFF_PN0_
+        1   $_DFF_PN1_
+    19212   $_MUX_
+      340   $_NOT_
+     4332   $_OR_
+      355   $_XOR_
+        2 submodules
+        1   $paramod$be7453039523723bf32745fe7e1e7a011200915b\axis_interconnect_2to1
+        1   axis_frame_packetizer
+

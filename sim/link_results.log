@@ -1,0 +1,27 @@
+PASS link DIRECT=1 DEPTH=4 seed=12345 packets=40 frames=128 stalls=350 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 995570000 (1ps)
+PASS link DIRECT=1 DEPTH=4 seed=67890 packets=40 frames=128 stalls=337 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 987520000 (1ps)
+PASS link DIRECT=1 DEPTH=4 seed=314159 packets=40 frames=132 stalls=380 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1015910000 (1ps)
+PASS link DIRECT=0 DEPTH=4 seed=12345 packets=80 frames=256 stalls=717 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1972820000 (1ps)
+PASS link DIRECT=0 DEPTH=4 seed=67890 packets=80 frames=256 stalls=645 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1956260000 (1ps)
+PASS link DIRECT=0 DEPTH=4 seed=314159 packets=80 frames=264 stalls=724 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 2012970000 (1ps)
+PASS link DIRECT=0 DEPTH=1 seed=12345 packets=80 frames=256 stalls=717 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1972820000 (1ps)
+PASS link DIRECT=0 DEPTH=1 seed=67890 packets=80 frames=256 stalls=645 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1956260000 (1ps)
+PASS link DIRECT=0 DEPTH=1 seed=314159 packets=80 frames=264 stalls=724 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 2012970000 (1ps)
+PASS link DIRECT=0 DEPTH=3 seed=12345 packets=80 frames=256 stalls=717 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1972820000 (1ps)
+PASS link DIRECT=0 DEPTH=3 seed=67890 packets=80 frames=256 stalls=645 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1956260000 (1ps)
+PASS link DIRECT=0 DEPTH=3 seed=314159 packets=80 frames=264 stalls=724 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 2012970000 (1ps)
+VCD info: dumpfile sim/link_tx.vcd opened for output.
+PASS link DIRECT=0 DEPTH=4 seed=12345 packets=80 frames=256 stalls=717 stall_mask=ff
+tb/tb_link_tx.sv:178: $finish called at 1972820000 (1ps)
