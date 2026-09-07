@@ -122,6 +122,10 @@ The implementation is a functional baseline, not optimized for PCIe line rate.
 
 ## File structure
 
+Stage 2 (protocol-to-PHY) files sit directly alongside the Stage 1 files in
+the same `rtl/`, `tb/`, `sim/`, `synthesis/` and `docs/` directories — there is
+no separate subfolder.
+
 ```text
 SemiCON-FabricATE/
 |-- rtl/                         Synthesizable hardware
@@ -131,7 +135,17 @@ SemiCON-FabricATE/
 |   |-- axis_frame_packetizer.sv  Collection, framing and CRC/FEC sequencing
 |   |-- flit_crc8.sv             Eight-byte CRC accumulator
 |   |-- flit_fec6.sv             Three-group FEC encoder
-|   `-- axis_link_tx.sv          Integrated transmit top level
+|   |-- axis_link_tx.sv          Integrated transmit top level (Stage 1)
+|   |-- phy_pkg.sv               Shared types/parameters (Stage 2)
+|   |-- ltssm.sv                 Link training and status state machine (Stage 2)
+|   |-- lane_striper.sv          256-bit to 4-lane byte striping (Stage 2)
+|   |-- lane_destriper.sv        4-lane to 256-bit de-striping (Stage 2)
+|   |-- lane_scrambler.sv        Per-lane 23-bit scrambler/descrambler (Stage 2)
+|   |-- gray_pam4_tx.sv          Gray coding + PAM4 symbol mapping (Stage 2)
+|   |-- gray_pam4_rx.sv          PAM4 symbol demapping + Gray decoding (Stage 2)
+|   |-- protocol_to_phy_tx.sv    TX datapath: stripe -> scramble -> Gray/PAM4 (Stage 2)
+|   |-- protocol_to_phy_rx.sv    RX datapath: inverse of TX (Stage 2)
+|   `-- protocol_to_phy_top.sv   LTSSM + TX + RX integration (Stage 2)
 |-- tb/                          Simulation-only testbenches
 |   |-- tb_arbiter.sv
 |   |-- tb_interconnect.sv
@@ -139,29 +153,34 @@ SemiCON-FabricATE/
 |   |-- tb_flit_crc8.sv
 |   |-- tb_flit_fec6.sv
 |   |-- crc_reference.svh        Independent CRC checking functions
-|   `-- fec_reference.svh        Independent FEC checking functions
+|   |-- fec_reference.svh        Independent FEC checking functions
+|   |-- tb_integrated.sv         Full-chip, LTSSM-gated PHY loopback (Stage 2)
+|   |-- tb_blocks.sv             Block-level striping/Gray/PAM4/scrambling checks (Stage 2)
+|   `-- tb_ltssm.sv              LTSSM-only testbench (Stage 2)
 |-- sim/
-|   |-- run_all.py               Complete Icarus regression
+|   |-- run_all.py               Complete Stage 1 Icarus regression
+|   |-- run_all.sh / run_all.ps1 Stage 2 protocol-to-PHY regression (Linux/macOS, Windows)
 |   |-- crc_vectors.py           Independent CRC vector generation
 |   |-- fec_vectors.py           FEC vectors and software correction checks
 |   |-- check_fec_reference.py   Optional specification-encoder comparison
 |   |-- run.sh                   Original interconnect: Bash/Icarus
 |   |-- run_link.sh              Frame pipeline: Bash/Icarus
 |   |-- run_verilator.sh         Original interconnect: Verilator
-|   |-- *_results.log            Recorded verification evidence
+|   |-- *_results.log            Recorded verification evidence (Stage 1 and Stage 2)
 |   `-- build/                   Generated binaries/vectors; ignored
 |-- synthesis/
 |   |-- check.ys                 Original interconnect synthesis
 |   |-- check_link.ys            Integrated transmit synthesis
-|   `-- *_results.log            Recorded synthesis evidence
+|   |-- run_yosys.ys             Stage 2 protocol-to-PHY synthesis script
+|   |-- run_yosys.sh / run_yosys.ps1  Wrappers for run_yosys.ys
+|   `-- *_results.log            Recorded synthesis evidence (Stage 1 and Stage 2)
 |-- docs/
 |   |-- INTERFACE.md             Original interconnect boundary
 |   |-- PACKETIZER.md            Frame and sideband contract
 |   |-- CRC.md                   CRC arithmetic and ordering
 |   |-- FEC.md                   FEC grouping and parity mapping
-|   |-- VERIFICATION.md          Executed checks and limitations
+|   |-- VERIFICATION.md          Executed checks and limitations (Stage 1 and Stage 2)
 |   `-- BUILD_PLAN.md            Original planning notes
-|-- protocol-to-phy/             Stage 2: frame data to PHY (see below)
 |-- .gitignore                   Generated/local files excluded
 |-- .gitattributes               Consistent text line endings
 `-- README.md
@@ -248,9 +267,11 @@ stream buses should remain internal.
    waveform generation and detailed implementation/result documentation.
 5. Excluded generated builds, downloaded tools and waveforms from Git, while
    retaining sources, scripts, documentation and compact result logs.
-6. Added the `protocol-to-phy/` subsystem: lane striping, scrambling, Gray/PAM4
+6. Added the protocol-to-PHY files: lane striping, scrambling, Gray/PAM4
    symbol mapping and an integrated LTSSM, extending the pipeline from the
-   256-bit frame output toward the PHY boundary. See below.
+   256-bit frame output toward the PHY boundary. These files sit alongside
+   the Stage 1 sources in the same `rtl/`, `tb/`, `sim/`, `synthesis/` and
+   `docs/` directories. See below.
 
 ## Commit and push
 
@@ -263,7 +284,7 @@ Review and publish from the repository root:
 ```sh
 git status --short
 git diff --check
-git add README.md .gitignore .gitattributes rtl tb sim synthesis docs protocol-to-phy
+git add README.md .gitignore .gitattributes rtl tb sim synthesis docs
 git diff --cached --stat
 git commit -m "Document and integrate transmit packetizer, CRC, FEC and protocol-to-PHY stage"
 git push -u origin HEAD
@@ -289,10 +310,15 @@ wrapper are also outside the current implementation. See
 
 ## Stage 2: Protocol-to-PHY digital subsystem
 
-Lives in [`protocol-to-phy/`](protocol-to-phy). This stage picks up where
-`axis_link_tx` leaves off: it takes 256-bit frame data and carries it down to a
-4-lane parallel digital PAM4-symbol interface, and adds the link-training state
-machine (LTSSM) that gates when the datapath is allowed to run.
+Adds new files directly into `rtl/`, `tb/`, `sim/`, `synthesis/` and `docs/`
+(listed with "(Stage 2)" in the file structure above) rather than a separate
+subfolder. This stage is meant to pick up where `axis_link_tx` leaves off: it
+takes 256-bit data and carries it down to a 4-lane parallel digital
+PAM4-symbol interface, and adds the link-training state machine (LTSSM) that
+gates when the datapath is allowed to run. **The two stages are not yet wired
+together** — `protocol_to_phy_top`'s `s_tx_data`/`m_rx_data` are independent
+256-bit ports, not connected to `axis_link_tx`'s `m_axis_tdata`; see Remaining
+work below.
 
 **Scope boundary:** the RTL ends at the 4-lane parallel digital PAM4-symbol
 interface to the analog/high-speed PHY. It does not model the analog SerDes, TX
@@ -343,22 +369,25 @@ flowchart LR
 
 ### Quick start
 
+This is a separate regression from Stage 1's `python sim/run_all.py`.
+
 Windows PowerShell:
 
 ```powershell
-./protocol-to-phy/sim/run_all.ps1
+./sim/run_all.ps1
 ```
 
 Linux/macOS:
 
 ```bash
-bash protocol-to-phy/sim/run_all.sh
+bash sim/run_all.sh
 ```
 
-The integrated testbench generates `integrated.vcd` under
-`protocol-to-phy/results/`. Open it in GTKWave and inspect `ltssm_state`,
-`link_up`, `tx_enable`, `rx_enable`, `s_tx_data`, `tx_pam4_symbols`,
-`rx_pam4_symbols`, `m_rx_data`, and the valid/ready signals.
+The integrated testbench generates `sim/integrated.vcd` (and
+`sim/blocks.vcd`, `sim/ltssm.vcd` from the other two runs). Open it in
+GTKWave and inspect `ltssm_state`, `link_up`, `tx_enable`, `rx_enable`,
+`s_tx_data`, `tx_pam4_symbols`, `rx_pam4_symbols`, `m_rx_data`, and the
+valid/ready signals.
 
 ### Verification
 
@@ -372,17 +401,39 @@ and Hot Reset. It continuously checks that `tx_enable` only asserts in L0,
 TX is disabled, and that all four lane-valid bits assert together on a valid TX
 symbol beat. A separate block-level testbench (`tb/tb_blocks.sv`) checks lane
 striping/destriping, Gray/PAM4 inverse mapping and scrambler/descrambler
-round-trip behavior. Full detail is in
-[`protocol-to-phy/reports/VERIFICATION_REPORT.md`](protocol-to-phy/reports/VERIFICATION_REPORT.md).
+round-trip behavior. Full detail, including the recorded results below, is in
+the "Protocol-to-PHY integration verification" section of
+[`docs/VERIFICATION.md`](docs/VERIFICATION.md).
 
 ### Synthesis
 
-With Yosys installed, run `protocol-to-phy/synthesis/run_yosys.ps1` (Windows)
-or `protocol-to-phy/synthesis/run_yosys.sh` (Linux/macOS) from the repository
-root. This is technology-independent synthesis of `protocol_to_phy_top`; it
-does not claim device-specific area, timing, utilization or GDSII, since those
-depend on a selected PDK/library that isn't bundled here. See
-[`protocol-to-phy/reports/SYNTHESIS_REPORT.md`](protocol-to-phy/reports/SYNTHESIS_REPORT.md).
+With Yosys installed, run `synthesis/run_yosys.ps1` (Windows) or
+`synthesis/run_yosys.sh` (Linux/macOS) from the repository root, or directly:
+
+```sh
+yosys -l synthesis/phy_structural_results.log synthesis/run_yosys.ys
+```
+
+This is technology-independent `-noabc` synthesis of `protocol_to_phy_top`
+followed by `check -assert`; it does not claim device-specific area, timing,
+utilization or GDSII, since those depend on a selected PDK/library that isn't
+bundled here.
+
+### Recorded results
+
+| Evidence | Result |
+|---|---|
+| `sim/phy_integrated_results.log` | All 13 integrated test cases (bring-up, invalid link width, directed payloads, backpressure, symbol corruption, Recovery, `phy_error`, 100 randomized transactions, Disabled/retrain, Hot Reset) and the continuous assertions passed; summary reports 113 checks/transactions |
+| `sim/phy_blocks_results.log` | All 4 block-level checks passed (striping/destriping, Gray/PAM4 inverse, scrambler round-trip, second directed pattern) |
+| `sim/phy_ltssm_results.log` | All 3 standalone LTSSM checks passed (reach L0, Recovery returns to L0, Disabled returns to Detect) |
+| `synthesis/phy_structural_results.log` | `hierarchy`/`synth -noabc`/`check -assert` completed with zero reported problems; 2 expected warnings (LFSR memories replaced by registers); 7,758 primitive cells, 4,171 wires |
+| `sim/integrated.vcd`, `sim/blocks.vcd`, `sim/ltssm.vcd` | Waveforms for the three simulation runs above |
+
+Recorded with Icarus Verilog 12.0 (stable) and Yosys 0.33. As with Stage 1,
+these `.vcd` files are typically excluded from Git (`*.vcd` in `.gitignore`);
+the compact `*_results.log` files referenced above and in
+[`docs/VERIFICATION.md`](docs/VERIFICATION.md) remain the verification
+evidence.
 
 ### Not modeled
 
@@ -393,38 +444,5 @@ depend on a selected PDK/library that isn't bundled here. See
   `axis_link_tx` stage above provides, at the frame level, not the wire level).
 - Full compliance-level LTSSM timing/training ordered sets.
 
-### Directory
-
-```text
-protocol-to-phy/
-|-- rtl/
-|   |-- phy_pkg.sv               Shared types/parameters
-|   |-- ltssm.sv                 Link training and status state machine
-|   |-- lane_striper.sv          256-bit to 4-lane byte striping
-|   |-- lane_destriper.sv        4-lane to 256-bit de-striping
-|   |-- lane_scrambler.sv        Per-lane 23-bit scrambler/descrambler
-|   |-- gray_pam4_tx.sv          Gray coding + PAM4 symbol mapping
-|   |-- gray_pam4_rx.sv          PAM4 symbol demapping + Gray decoding
-|   |-- protocol_to_phy_tx.sv    TX datapath (stripe -> scramble -> Gray/PAM4)
-|   |-- protocol_to_phy_rx.sv    RX datapath (inverse of TX)
-|   `-- protocol_to_phy_top.sv   LTSSM + TX + RX integration
-|-- tb/
-|   |-- tb_integrated.sv         Full-chip, LTSSM-gated loopback testbench
-|   |-- tb_blocks.sv             Block-level striping/Gray/PAM4/scrambling checks
-|   `-- tb_ltssm.sv              LTSSM-only testbench
-|-- sim/
-|   |-- run_all.sh / run_all.ps1     Full regression (Linux/macOS, Windows)
-|   `-- run_sim.sh / run_sim.ps1     Single-run helper
-|-- synthesis/
-|   |-- run_yosys.sh / run_yosys.ps1 Generic Yosys synthesis flow
-|   |-- run_yosys.ys
-|   `-- README.md
-|-- reports/
-|   |-- VERIFICATION_REPORT.md
-|   |-- SYNTHESIS_REPORT.md
-|   `-- TECHNICAL_DESIGN_REPORT.pdf
-|-- docs/
-|   |-- SCOPE.md                 Implemented / not-modeled boundary
-|   `-- DESIGN_REPORT_OUTLINE.md
-`-- results/                     Generated logs/netlists/VCDs; not pre-filled
-```
+The specific files that make up this stage are listed with "(Stage 2)" in the
+top-level [File structure](#file-structure) section above.
