@@ -1,0 +1,7 @@
+VCD info: dumpfile blocks.vcd opened for output.
+PASS: lane striping/destriping
+PASS: Gray/PAM4 mapping inverse
+PASS: per-lane scrambler/descrambler roundtrip
+PASS: second directed block pattern
+ALL BLOCK-LEVEL TESTS PASSED
+tb/tb_blocks.sv:43: $finish called at 37000 (1ps)
