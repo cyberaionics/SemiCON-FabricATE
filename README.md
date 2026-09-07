@@ -2,7 +2,11 @@
 
 A synthesizable SystemVerilog transmit subsystem for the SARCathon AXI4-to-PCIe
 challenge. It combines two 512-bit AXI4-Stream sources, assembles 256-byte frames,
-generates CRC and FEC bytes, and emits eight 256-bit transfers per frame.
+generates CRC and FEC bytes, and emits eight 256-bit transfers per frame. A second
+stage, added in this submission, carries that 256-bit frame data the rest of the
+way to a 4-lane digital PAM4 PHY interface with its own link-training state
+machine. See [Stage 2: Protocol-to-PHY digital subsystem](#stage-2-protocol-to-phy-digital-subsystem)
+below.
 
 **Status:** transmit framing, CRC and FEC are implemented and tested. The payload
 format is a Stage 1 application-data prototype, not a complete PCIe-compliant
@@ -45,6 +49,7 @@ flowchart LR
     COL --> CRC[8-byte CRC]
     CRC --> FEC[6-byte FEC]
     FEC --> OUT[Eight 256-bit output transfers]
+    OUT -.Stage 2.-> PHY[Protocol-to-PHY subsystem]
 ```
 
 1. **Buffer inputs.** A transfer occurs on a rising clock edge when VALID and
@@ -156,6 +161,7 @@ SemiCON-FabricATE/
 |   |-- FEC.md                   FEC grouping and parity mapping
 |   |-- VERIFICATION.md          Executed checks and limitations
 |   `-- BUILD_PLAN.md            Original planning notes
+|-- protocol-to-phy/             Stage 2: frame data to PHY (see below)
 |-- .gitignore                   Generated/local files excluded
 |-- .gitattributes               Consistent text line endings
 `-- README.md
@@ -242,6 +248,9 @@ stream buses should remain internal.
    waveform generation and detailed implementation/result documentation.
 5. Excluded generated builds, downloaded tools and waveforms from Git, while
    retaining sources, scripts, documentation and compact result logs.
+6. Added the `protocol-to-phy/` subsystem: lane striping, scrambling, Gray/PAM4
+   symbol mapping and an integrated LTSSM, extending the pipeline from the
+   256-bit frame output toward the PHY boundary. See below.
 
 ## Commit and push
 
@@ -254,9 +263,9 @@ Review and publish from the repository root:
 ```sh
 git status --short
 git diff --check
-git add README.md .gitignore .gitattributes rtl tb sim synthesis docs
+git add README.md .gitignore .gitattributes rtl tb sim synthesis docs protocol-to-phy
 git diff --cached --stat
-git commit -m "Document and integrate transmit packetizer, CRC and FEC"
+git commit -m "Document and integrate transmit packetizer, CRC, FEC and protocol-to-PHY stage"
 git push -u origin HEAD
 ```
 
@@ -267,10 +276,155 @@ branch and requires write access to the configured remote. No force push is need
 
 - Receive-side FEC correction and CRC checking in synthesizable RTL.
 - Real TLP/DLP encoding, descriptors, transactions, replay and credits.
-- Lane striping, digital symbol mapping and PHY integration.
 - Throughput optimization, application workloads and broader verification.
 - Technology-mapped synthesis, timing analysis, physical design and GDSII.
+- Analog SerDes, TX driver, RX analog front end, CDR, CTLE/equalization,
+  package/PCB channel and electrical compliance (see Stage 2 scope below).
 
 Memory-mapped AXI4 AW/W/B/AR/R interfaces, a general N-by-M crossbar and a board
 wrapper are also outside the current implementation. See
 [VERIFICATION.md](docs/VERIFICATION.md) for the limits of the executed checks.
+
+---
+
+## Stage 2: Protocol-to-PHY digital subsystem
+
+Lives in [`protocol-to-phy/`](protocol-to-phy). This stage picks up where
+`axis_link_tx` leaves off: it takes 256-bit frame data and carries it down to a
+4-lane parallel digital PAM4-symbol interface, and adds the link-training state
+machine (LTSSM) that gates when the datapath is allowed to run.
+
+**Scope boundary:** the RTL ends at the 4-lane parallel digital PAM4-symbol
+interface to the analog/high-speed PHY. It does not model the analog SerDes, TX
+driver, RX analog front end, CDR, CTLE/equalization, package/PCB channel, or
+electrical compliance.
+
+```mermaid
+flowchart LR
+    IN[256-bit s_tx_data] --> STR[4-lane byte striping]
+    STR --> SCR[Per-lane scrambling]
+    SCR --> GRAY[Gray coding]
+    GRAY --> PAM4TX[PAM4 symbol mapping]
+    PAM4TX --> SYM[tx_pam4_symbols, 4 lanes]
+    SYM -.digital loopback in sim.-> PAM4RX[PAM4 symbol demapping]
+    PAM4RX --> GRAYD[Gray decoding]
+    GRAYD --> DSCR[Per-lane descrambling]
+    DSCR --> DSTR[Lane de-striping]
+    DSTR --> OUT[256-bit m_rx_data]
+    LTSSM[LTSSM: Detect -> Polling -> Configuration -> L0 / Recovery / Disabled / Hot Reset] -. gates tx_enable / rx_enable .-> STR
+    LTSSM -. gates .-> PAM4RX
+```
+
+### What's implemented
+
+- 256-bit digital datapath, 4-lane byte striping and de-striping.
+- Per-lane PCIe-oriented 23-bit scrambling and descrambling.
+- Gray coding/decoding and 2-bit symbol representation for PAM4.
+- An LTSSM covering Detect, Polling, Configuration, L0, Recovery, Disabled and
+  Hot Reset, which gates TX/RX datapath operation.
+- An integrated, self-checking digital loopback testbench and VCD waveform
+  generation.
+
+### Top level
+
+`protocol_to_phy_top` instantiates the LTSSM plus the TX and RX datapaths.
+
+| Signals | Meaning |
+|---|---|
+| `clk`, `rst_n` | Shared clock and active-low reset |
+| `phy_rx_detected`, `training_done`, `link_width_ok`, `lane_config_ok` | LTSSM link-bring-up inputs |
+| `recovery_request`, `phy_error`, `disable_request`, `hot_reset_request` | LTSSM control inputs |
+| `s_tx_data`, `s_tx_valid`, `s_tx_ready` | 256-bit TX data in |
+| `tx_pam4_symbols`, `tx_valid`, `tx_lane_valid` | 4-lane PAM4 symbol output |
+| `rx_pam4_symbols`, `rx_valid` | 4-lane PAM4 symbol input |
+| `m_rx_data`, `m_rx_valid`, `m_rx_ready` | 256-bit RX data out |
+| `link_up`, `tx_enable`, `rx_enable`, `training_enable`, `recovery_active` | LTSSM status outputs |
+| `ltssm_state`, `ltssm_state_changed` | Current LTSSM state and a change strobe |
+
+### Quick start
+
+Windows PowerShell:
+
+```powershell
+./protocol-to-phy/sim/run_all.ps1
+```
+
+Linux/macOS:
+
+```bash
+bash protocol-to-phy/sim/run_all.sh
+```
+
+The integrated testbench generates `integrated.vcd` under
+`protocol-to-phy/results/`. Open it in GTKWave and inspect `ltssm_state`,
+`link_up`, `tx_enable`, `rx_enable`, `s_tx_data`, `tx_pam4_symbols`,
+`rx_pam4_symbols`, `m_rx_data`, and the valid/ready signals.
+
+### Verification
+
+The integrated testbench (`tb/tb_integrated.sv`) exercises reset and link
+bring-up, invalid link-width configuration blocking L0, directed payload
+patterns, RX ready/valid backpressure, PAM4-symbol corruption visible at the
+reconstructed RX data, explicit Recovery and independent `phy_error` triggers,
+post-Recovery transfer, 100 randomized 256-bit transactions, Disabled/retraining,
+and Hot Reset. It continuously checks that `tx_enable` only asserts in L0,
+`link_up`/`recovery_active` track the LTSSM state, `tx_valid` cannot assert while
+TX is disabled, and that all four lane-valid bits assert together on a valid TX
+symbol beat. A separate block-level testbench (`tb/tb_blocks.sv`) checks lane
+striping/destriping, Gray/PAM4 inverse mapping and scrambler/descrambler
+round-trip behavior. Full detail is in
+[`protocol-to-phy/reports/VERIFICATION_REPORT.md`](protocol-to-phy/reports/VERIFICATION_REPORT.md).
+
+### Synthesis
+
+With Yosys installed, run `protocol-to-phy/synthesis/run_yosys.ps1` (Windows)
+or `protocol-to-phy/synthesis/run_yosys.sh` (Linux/macOS) from the repository
+root. This is technology-independent synthesis of `protocol_to_phy_top`; it
+does not claim device-specific area, timing, utilization or GDSII, since those
+depend on a selected PDK/library that isn't bundled here. See
+[`protocol-to-phy/reports/SYNTHESIS_REPORT.md`](protocol-to-phy/reports/SYNTHESIS_REPORT.md).
+
+### Not modeled
+
+- Analog SerDes, actual FPGA transceiver electrical behavior.
+- CDR/equalization.
+- Physical PCIe connector signaling.
+- Complete PCIe controller/link-layer packetization (that's what the
+  `axis_link_tx` stage above provides, at the frame level, not the wire level).
+- Full compliance-level LTSSM timing/training ordered sets.
+
+### Directory
+
+```text
+protocol-to-phy/
+|-- rtl/
+|   |-- phy_pkg.sv               Shared types/parameters
+|   |-- ltssm.sv                 Link training and status state machine
+|   |-- lane_striper.sv          256-bit to 4-lane byte striping
+|   |-- lane_destriper.sv        4-lane to 256-bit de-striping
+|   |-- lane_scrambler.sv        Per-lane 23-bit scrambler/descrambler
+|   |-- gray_pam4_tx.sv          Gray coding + PAM4 symbol mapping
+|   |-- gray_pam4_rx.sv          PAM4 symbol demapping + Gray decoding
+|   |-- protocol_to_phy_tx.sv    TX datapath (stripe -> scramble -> Gray/PAM4)
+|   |-- protocol_to_phy_rx.sv    RX datapath (inverse of TX)
+|   `-- protocol_to_phy_top.sv   LTSSM + TX + RX integration
+|-- tb/
+|   |-- tb_integrated.sv         Full-chip, LTSSM-gated loopback testbench
+|   |-- tb_blocks.sv             Block-level striping/Gray/PAM4/scrambling checks
+|   `-- tb_ltssm.sv              LTSSM-only testbench
+|-- sim/
+|   |-- run_all.sh / run_all.ps1     Full regression (Linux/macOS, Windows)
+|   `-- run_sim.sh / run_sim.ps1     Single-run helper
+|-- synthesis/
+|   |-- run_yosys.sh / run_yosys.ps1 Generic Yosys synthesis flow
+|   |-- run_yosys.ys
+|   `-- README.md
+|-- reports/
+|   |-- VERIFICATION_REPORT.md
+|   |-- SYNTHESIS_REPORT.md
+|   `-- TECHNICAL_DESIGN_REPORT.pdf
+|-- docs/
+|   |-- SCOPE.md                 Implemented / not-modeled boundary
+|   `-- DESIGN_REPORT_OUTLINE.md
+`-- results/                     Generated logs/netlists/VCDs; not pre-filled
+```
