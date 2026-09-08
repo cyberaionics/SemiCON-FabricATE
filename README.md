@@ -24,7 +24,7 @@ Requirements:
 ```sh
 git clone https://github.com/cyberaionics/SemiCON-FabricATE.git
 cd SemiCON-FabricATE
-python sim/run_all.py
+./sim/run_all.sh
 ```
 
 Use `py -3` on Windows or `python3` on Linux/macOS if that is your Python command.
