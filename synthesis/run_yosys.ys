@@ -1,0 +1,14 @@
+read_verilog -sv rtl/phy_pkg.sv
+read_verilog -sv rtl/ltssm.sv
+read_verilog -sv rtl/lane_striper.sv
+read_verilog -sv rtl/lane_destriper.sv
+read_verilog -sv rtl/lane_scrambler.sv
+read_verilog -sv rtl/gray_pam4_tx.sv
+read_verilog -sv rtl/gray_pam4_rx.sv
+read_verilog -sv rtl/protocol_to_phy_tx.sv
+read_verilog -sv rtl/protocol_to_phy_rx.sv
+read_verilog -sv rtl/protocol_to_phy_top.sv
+hierarchy -check -top protocol_to_phy_top
+synth -noabc -top protocol_to_phy_top
+check -assert
+stat
