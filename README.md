@@ -20,7 +20,7 @@ Requirements:
 ```sh
 git clone https://github.com/cyberaionics/SemiCON-FabricATE.git
 cd SemiCON-FabricATE
-./sim/run_all.sh
+./sim/run_all_crc.sh
 ```
 
 Use `py -3` on Windows or `python3` on Linux/macOS if that is your Python command.
@@ -37,7 +37,7 @@ exit. Binaries, vectors and compiler logs are generated under `sim/build/`.
 On Linux/macOS, or from Git Bash/MSYS2 on Windows, use the single executable:
 
 ```sh
-./sim/run_all.sh
+./sim/run_all_crc.sh
 ```
 
 The script runs the FEC unit test, CRC unit test, arbiter test, interconnect
@@ -50,10 +50,10 @@ The script can be invoked by its path from another working directory. If a ZIP
 download or filesystem loses executable permissions, run either:
 
 ```sh
-chmod +x sim/run_all.sh
-./sim/run_all.sh
+chmod +x sim/run_all_crc.sh
+./sim/run_all_crc.sh
 # Or run it through a shell without changing permissions:
-sh sim/run_all.sh
+sh sim/run_all_crc.sh
 ```
 
 From Windows PowerShell or Command Prompt, run the same underlying regression:
@@ -66,7 +66,7 @@ Use `python sim/run_all.py` when Python is available under that name. To select
 a specific interpreter for the shell launcher:
 
 ```sh
-PYTHON=/path/to/python3 ./sim/run_all.sh
+PYTHON=/path/to/python3 ./sim/run_all_crc.sh
 ```
 
 Successful tests print PASS lines and the process exits with code zero. Inspect
@@ -186,7 +186,7 @@ SemiCON-FabricATE/
 |   |-- crc_reference.svh        Independent CRC checking functions
 |   `-- fec_reference.svh        Independent FEC checking functions
 |-- sim/
-|   |-- run_all.sh               Single executable launcher for all testbenches
+|   |-- run_all_crc.sh           Single executable launcher for all testbenches
 |   |-- run_all.py               Complete Icarus regression
 |   |-- crc_vectors.py           Independent CRC vector generation
 |   |-- fec_vectors.py           FEC vectors and software correction checks
