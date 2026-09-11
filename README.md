@@ -24,7 +24,7 @@ Requirements:
 ```sh
 git clone https://github.com/cyberaionics/SemiCON-FabricATE.git
 cd SemiCON-FabricATE
-./sim/run_all.sh
+./sim/run_all_crc.sh
 ```
 
 Use `py -3` on Windows or `python3` on Linux/macOS if that is your Python command.
@@ -35,6 +35,56 @@ need their runtime DLLs available. An existing project-local
 The runner compiles tests, generates vectors, runs simulations and writes logs.
 Compilation failures, simulation failures or missing PASS results cause a nonzero
 exit. Binaries, vectors and compiler logs are generated under `sim/build/`.
+
+### Run the complete system simulation
+
+On Linux/macOS, or from Git Bash/MSYS2 on Windows, use the single executable:
+
+```sh
+./sim/run_all_crc.sh
+```
+
+The script runs the FEC unit test, CRC unit test, arbiter test, interconnect
+regression and integrated transmitter regression. The integrated testbench
+supplies traffic to both inputs, applies downstream stalls and reset, and checks
+the emitted frames. No separate traffic generator or manual simulator command
+is needed. This simulates the RTL; it does not program an FPGA.
+
+The script can be invoked by its path from another working directory. If a ZIP
+download or filesystem loses executable permissions, run either:
+
+```sh
+chmod +x sim/run_all_crc.sh
+./sim/run_all_crc.sh
+# Or run it through a shell without changing permissions:
+sh sim/run_all_crc.sh
+```
+
+From Windows PowerShell or Command Prompt, run the same underlying regression:
+
+```powershell
+py -3 sim/run_all.py
+```
+
+Use `python sim/run_all.py` when Python is available under that name. To select
+a specific interpreter for the shell launcher:
+
+```sh
+PYTHON=/path/to/python3 ./sim/run_all_crc.sh
+```
+
+Successful tests print PASS lines and the process exits with code zero. Inspect
+`sim/link_results.log` for the integrated results and `sim/link_tx.vcd` for the
+waveform. For example, with GTKWave installed:
+
+```sh
+gtkwave sim/link_tx.vcd
+```
+
+If a compiler or simulator fails, consult `sim/build/*_compile.log` and the
+corresponding results log. Ensure both `iverilog` and `vvp` are installed and
+available on PATH before running. All commands above require local tools;
+the launcher does not download dependencies.
 
 ## How it works
 
@@ -158,8 +208,8 @@ SemiCON-FabricATE/
 |   |-- tb_blocks.sv             Block-level striping/Gray/PAM4/scrambling checks (Stage 2)
 |   `-- tb_ltssm.sv              LTSSM-only testbench (Stage 2)
 |-- sim/
-|   |-- run_all.py               Complete Stage 1 Icarus regression
-|   |-- run_all.sh / run_all.ps1 Stage 2 protocol-to-PHY regression (Linux/macOS, Windows)
+|   |-- run_all_crc.sh           Single executable launcher for all testbenches
+|   |-- run_all.py               Complete Icarus regression
 |   |-- crc_vectors.py           Independent CRC vector generation
 |   |-- fec_vectors.py           FEC vectors and software correction checks
 |   |-- check_fec_reference.py   Optional specification-encoder comparison
