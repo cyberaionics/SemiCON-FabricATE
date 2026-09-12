@@ -1,5 +1,0 @@
-VCD info: dumpfile ltssm.vcd opened for output.
-PASS: standalone LTSSM reached L0
-PASS: standalone Recovery returned L0
-PASS: standalone Disabled returned to Detect
-tb/tb_ltssm.sv:30: $finish called at 305000 (1ps)
