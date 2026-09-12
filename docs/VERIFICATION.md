@@ -137,3 +137,47 @@ The new hardware is TX encoding. Error correction was demonstrated in a Python
 verification model, not receive RTL. The application-data framing prototype and
 other protocol limitations remain. See `FEC.md` for mapping, arithmetic, timing
 and the optional reference-comparison command.
+
+## Protocol-to-PHY integration verification, 2026-09-07
+
+A second, independent RTL stage (`protocol_to_phy_top`) was added, carrying
+256-bit frame data the rest of the way to a 4-lane digital PAM4-symbol
+interface: byte striping, per-lane scrambling, Gray coding/PAM4 symbol mapping,
+the inverse RX datapath, and an LTSSM (Detect/Polling/Configuration/L0/
+Recovery/Disabled/Hot Reset) that gates when TX/RX may run. This stage does not
+depend on, and is not yet wired to, `axis_link_tx`'s frame output; see the
+README's Stage 2 section for the scope boundary and remaining integration work.
+
+Executed `sim/run_all.sh` (Linux/macOS) with Icarus Verilog 12.0 (stable), and
+`synthesis/run_yosys.sh` with Yosys 0.33.
+
+| Check | Result |
+|---|---|
+| Reset, link bring-up, invalid link-width blocking L0 | PASS |
+| Directed TX -> 4-lane PHY -> RX loopback payloads | PASS |
+| RX ready/valid backpressure | PASS |
+| Injected PAM4-symbol corruption visible at RX | PASS |
+| Explicit Recovery request and independent `phy_error` trigger | PASS, both return to L0 |
+| 100 randomized 256-bit end-to-end transactions | PASS |
+| Disabled state, retraining, Hot Reset | PASS |
+| Continuous assertions (`tx_enable`/`link_up`/`recovery_active` tracking, lane-valid grouping) | PASS throughout, no violations |
+| Block-level striping/destriping, Gray/PAM4 inverse, scrambler round-trip | PASS, all 4 checks |
+| Standalone LTSSM: reach L0, Recovery returns to L0, Disabled returns to Detect | PASS, all 3 checks |
+| Yosys 0.33 `synth -noabc` and `check -assert` on `protocol_to_phy_top` | PASS, zero reported problems |
+
+The integrated run reports 113 checks/transactions across the 11 listed
+scenarios plus the continuous assertions. No FAIL was reported and no run
+terminated early.
+
+Evidence: `sim/phy_integrated_results.log`, `sim/phy_blocks_results.log`,
+`sim/phy_ltssm_results.log`, `sim/integrated.vcd`, `sim/blocks.vcd`,
+`sim/ltssm.vcd`, and `synthesis/phy_structural_results.log`.
+
+Generic `-noabc` synthesis of `protocol_to_phy_top` reports 7,758 primitive
+cells and 4,171 wires. The only warnings are the expected replacement of the
+per-lane scrambler's two small LFSR memories with register lists (`lane_scrambler.sv`);
+no latches are inferred and `check -assert` reports zero problems. These are
+unmapped generic-gate counts, not device-specific area, timing, FPGA fit or
+GDSII, and this stage still ends at the digital PAM4-symbol interface: no
+analog SerDes, CDR, equalization, physical connector signaling, or full
+compliance-level LTSSM ordered-set timing is modeled or claimed.
