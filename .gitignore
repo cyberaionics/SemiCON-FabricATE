@@ -5,3 +5,5 @@ sim/compile_logs/
 *.fst
 __pycache__/
 *.py[cod]
+*.pdf
+*.zip
