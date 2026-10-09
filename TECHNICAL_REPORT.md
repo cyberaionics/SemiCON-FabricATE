@@ -20,7 +20,7 @@ The design should be described accurately as a **verified transmit/framing and d
 ## 2. Problem Statement and Requirement Interpretation
 
 The supplied PDF, `6a98574f4fcb9_semicon_hackathon_docx.pdf`, defines two stages.
-
+Hello Wordl
 ### Stage 1: Qualifier
 
 The challenge requests:
