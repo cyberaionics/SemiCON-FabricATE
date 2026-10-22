@@ -196,6 +196,8 @@ SemiCON-FabricATE/
 |   |-- protocol_to_phy_tx.sv    TX datapath: stripe -> scramble -> Gray/PAM4 (Stage 2)
 |   |-- protocol_to_phy_rx.sv    RX datapath: inverse of TX (Stage 2)
 |   `-- protocol_to_phy_top.sv   LTSSM + TX + RX integration (Stage 2)
+|   |-- axis_to_phy_tx.sv        AXI-Stream register slice to PHY beat interface (Stage 2)
+|   `-- link_to_phy_tx.sv        End-to-end TX wrapper: packetizer -> PHY (Stage 2)
 |-- tb/                          Simulation-only testbenches
 |   |-- tb_arbiter.sv
 |   |-- tb_interconnect.sv
@@ -206,7 +208,9 @@ SemiCON-FabricATE/
 |   |-- fec_reference.svh        Independent FEC checking functions
 |   |-- tb_integrated.sv         Full-chip, LTSSM-gated PHY loopback (Stage 2)
 |   |-- tb_blocks.sv             Block-level striping/Gray/PAM4/scrambling checks (Stage 2)
-|   `-- tb_ltssm.sv              LTSSM-only testbench (Stage 2)
+|   |-- tb_ltssm.sv              LTSSM-only testbench (Stage 2)
+|   |-- tb_axis_to_phy_tx.sv     Register-slice bridge unit testbench (Stage 2)
+|   `-- tb_link_to_phy_tx.sv     End-to-end TX integration testbench (Stage 2)
 |-- sim/
 |   |-- run_all_crc.sh           Single executable launcher for all testbenches
 |   |-- run_all.py               Complete Icarus regression
@@ -365,10 +369,12 @@ Adds new files directly into `rtl/`, `tb/`, `sim/`, `synthesis/` and `docs/`
 subfolder. This stage is meant to pick up where `axis_link_tx` leaves off: it
 takes 256-bit data and carries it down to a 4-lane parallel digital
 PAM4-symbol interface, and adds the link-training state machine (LTSSM) that
-gates when the datapath is allowed to run. **The two stages are not yet wired
-together** — `protocol_to_phy_top`'s `s_tx_data`/`m_rx_data` are independent
-256-bit ports, not connected to `axis_link_tx`'s `m_axis_tdata`; see Remaining
-work below.
+gates when the datapath is allowed to run. The two stages **are wired together**
+in `link_to_phy_tx`, which instantiates `axis_link_tx` -> `axis_to_phy_tx` ->
+`protocol_to_phy_tx` on a shared clock/reset. See [link_to_phy_tx](#link_to_phy_tx-end-to-end-tx-integration)
+below. `protocol_to_phy_top` (LTSSM + TX + RX) is still tested standalone and
+its `s_tx_data`/`m_rx_data` ports are independent 256-bit ports in that
+module; the end-to-end TX path uses `link_to_phy_tx` instead.
 
 **Scope boundary:** the RTL ends at the 4-lane parallel digital PAM4-symbol
 interface to the analog/high-speed PHY. It does not model the analog SerDes, TX
