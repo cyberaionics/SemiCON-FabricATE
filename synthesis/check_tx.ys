@@ -1,0 +1,5 @@
+read_verilog -sv rtl/axis_to_phy_tx.sv
+hierarchy -check -top axis_to_phy_tx
+synth -noabc -top axis_to_phy_tx
+check -assert
+stat
