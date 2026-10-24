@@ -1,13 +1,13 @@
-.tools/
+# simulator / build outputs
 sim/build/
-sim/compile_logs/
+sim/build_phy/
 *.vcd
-*.fst
 __pycache__/
-*.py[cod]
-*.pdf
-*.zip
-sim/*.log
-sim/*.vcd
-reports/*.log
-*.log
+*.pyc
+.tools/
+# large physical-design artifacts (attach to a GitHub Release instead)
+orfs_backup/
+*.odb
+*.gds
+*.def
+*.spef

@@ -52,16 +52,20 @@ module protocol_to_phy_top(
     .state_changed(ltssm_state_changed)
   );
 
+  logic rx_ready;
+
   protocol_to_phy_tx u_tx(
     .clk(clk), .rst_n(rst_n), .enable(tx_enable),
     .s_data(s_tx_data), .s_valid(s_tx_valid), .s_ready(s_tx_ready),
     .tx_pam4_symbols(tx_pam4_symbols), .tx_valid(tx_valid),
+    .tx_ready(rx_ready),
     .tx_lane_valid(tx_lane_valid)
   );
 
   protocol_to_phy_rx u_rx(
     .clk(clk), .rst_n(rst_n), .enable(rx_enable),
     .rx_pam4_symbols(rx_pam4_symbols), .rx_valid(rx_valid),
-    .m_data(m_rx_data), .m_valid(m_rx_valid), .m_ready(m_rx_ready)
+    .m_data(m_rx_data), .m_valid(m_rx_valid), .m_ready(m_rx_ready),
+    .rx_ready(rx_ready)
   );
 endmodule
